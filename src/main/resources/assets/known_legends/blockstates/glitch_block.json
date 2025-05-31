@@ -1,0 +1,42 @@
+{
+  "variants": {
+    "": [
+      { "model": "known_legends:block/glitch_block", "x": 0 },
+      { "model": "known_legends:block/glitch_block", "x": 90 },
+      { "model": "known_legends:block/glitch_block", "x": 180 },
+      { "model": "known_legends:block/glitch_block", "x": 270 },
+      { "model": "known_legends:block/glitch_block", "y": 0 },
+      { "model": "known_legends:block/glitch_block", "y": 90 },
+      { "model": "known_legends:block/glitch_block", "y": 180 },
+      { "model": "known_legends:block/glitch_block", "y": 270 },
+      { "model": "known_legends:block/glitch_block", "z": 0 },
+      { "model": "known_legends:block/glitch_block", "z": 90 },
+      { "model": "known_legends:block/glitch_block", "z": 180 },
+      { "model": "known_legends:block/glitch_block", "z": 270 },
+      { "model": "known_legends:block/glitch_block_2", "x": 0 },
+      { "model": "known_legends:block/glitch_block_2", "x": 90 },
+      { "model": "known_legends:block/glitch_block_2", "x": 180 },
+      { "model": "known_legends:block/glitch_block_2", "x": 270 },
+      { "model": "known_legends:block/glitch_block_2", "y": 0 },
+      { "model": "known_legends:block/glitch_block_2", "y": 90 },
+      { "model": "known_legends:block/glitch_block_2", "y": 180 },
+      { "model": "known_legends:block/glitch_block_2", "y": 270 },
+      { "model": "known_legends:block/glitch_block_2", "z": 0 },
+      { "model": "known_legends:block/glitch_block_2", "z": 90 },
+      { "model": "known_legends:block/glitch_block_2", "z": 180 },
+      { "model": "known_legends:block/glitch_block_2", "z": 270 },
+      { "model": "known_legends:block/glitch_block_3", "x": 0 },
+      { "model": "known_legends:block/glitch_block_3", "x": 90 },
+      { "model": "known_legends:block/glitch_block_3", "x": 180 },
+      { "model": "known_legends:block/glitch_block_3", "x": 270 },
+      { "model": "known_legends:block/glitch_block_3", "y": 0 },
+      { "model": "known_legends:block/glitch_block_3", "y": 90 },
+      { "model": "known_legends:block/glitch_block_3", "y": 180 },
+      { "model": "known_legends:block/glitch_block_3", "y": 270 },
+      { "model": "known_legends:block/glitch_block_3", "z": 0 },
+      { "model": "known_legends:block/glitch_block_3", "z": 90 },
+      { "model": "known_legends:block/glitch_block_3", "z": 180 },
+      { "model": "known_legends:block/glitch_block_3", "z": 270 }
+    ]
+  }
+}

@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "known_legends:block/error_block_3"
-  }
-}

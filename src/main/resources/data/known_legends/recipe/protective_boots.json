@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "minecraft:iron_boots",
+    "L": "minecraft:leather",
+    "O": "minecraft:obsidian",
+    "P": "known_legends:fix_powder"
+  },
+  "pattern": [
+    "LBL",
+    "OPO"
+  ],
+  "result": {
+    "id": "known_legends:protective_boots",
+    "count": 1
+  }
+}

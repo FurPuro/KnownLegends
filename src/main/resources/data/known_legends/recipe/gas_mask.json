@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "@": "minecraft:string",
+    "#": "minecraft:leather",
+    "$": "minecraft:glass_pane",
+    "%": "minecraft:obsidian",
+    "&": "minecraft:iron_ingot",
+    "*": "known_legends:fix_powder"
+  },
+  "pattern": [
+    "#@#",
+    "&$&",
+    "*%*"
+  ],
+  "result": {
+    "id": "known_legends:gas_mask",
+    "count": 1
+  }
+}

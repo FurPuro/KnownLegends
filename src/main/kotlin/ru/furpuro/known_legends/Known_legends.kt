@@ -1,6 +1,8 @@
 package ru.furpuro.known_legends
 
 import net.minecraft.client.Minecraft
+import net.minecraft.world.level.block.Blocks
+import net.minecraft.world.level.block.FireBlock
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
 import net.neoforged.fml.common.Mod
@@ -8,13 +10,12 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent
 import net.neoforged.fml.event.lifecycle.FMLDedicatedServerSetupEvent
 import net.neoforged.neoforge.common.NeoForge
-import net.neoforged.neoforge.event.RegisterCommandsEvent
 import org.apache.logging.log4j.Level
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
-import ru.furpuro.known_legends.block.ModBlocks
-import ru.furpuro.known_legends.custom.ErrorBlockSpawnCommand
+import ru.furpuro.known_legends.blocks.ModBlocks
 import ru.furpuro.known_legends.custom.EventHandler
+import ru.furpuro.known_legends.data.ModAttachments
 import ru.furpuro.known_legends.items.ModItems
 import thedarkcolour.kotlinforforge.neoforge.forge.MOD_BUS
 import thedarkcolour.kotlinforforge.neoforge.forge.runForDist
@@ -38,6 +39,7 @@ object Known_legends {
         // Register the KDeferredRegister to the mod-specific event bus
         ModBlocks.REGISTRY.register(MOD_BUS)
         ModItems.REGISTRY.register(MOD_BUS)
+        ModAttachments.register(MOD_BUS)
         NeoForge.EVENT_BUS.register(EventHandler())
 
         val obj = runForDist(
@@ -70,7 +72,11 @@ object Known_legends {
     }
 
     @SubscribeEvent
-    fun onCommonSetup(event: FMLCommonSetupEvent) {
+    private fun onCommonSetup(event: FMLCommonSetupEvent) {
         LOGGER.log(Level.INFO, "Hello! This is working!")
+
+        val fireBlock = Blocks.FIRE as FireBlock
+        fireBlock.setFlammable(ModBlocks.GLITCH_BLOCK.get(), 3, 5)
+        fireBlock.setFlammable(ModBlocks.GLITCH_LEAVES.get(), 8, 15)
     }
 }

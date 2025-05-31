@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "known_legends:block/fix_gas"
+  },
+  "render_type": "translucent"
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "known_legends:glitch_block",
+    "known_legends:fix_powder"
+  ],
+  "result": {
+    "id": "known_legends:glitch_block_decor",
+    "count": 2
+  }
+}

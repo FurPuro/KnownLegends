@@ -1,6 +1,13 @@
 {
-  "item.known_legends.error_block_decor": "Decorative Error Block",
-  "block.known_legends.error_block_decor": "Decorative Error Block",
-  "item.known_legends.error_block": "Error Block",
-  "block.known_legends.error_block": "Error Block"
+  "item.known_legends.glitch_block_decor": "Decorative Glitch Block",
+  "block.known_legends.glitch_block_decor": "Decorative Glitch Block",
+  "item.known_legends.glitch_block": "Glitch Block",
+  "block.known_legends.glitch_block": "Glitch Block",
+  "item.known_legends.fix_gas_sprayer": "Fix Gas Sprayer",
+  "block.known_legends.fix_gas_sprayer": "Fix Gas Sprayer",
+  "item.known_legends.gas_mask": "Gas Mask",
+  "item.known_legends.fix_powder": "Fix Powder",
+  "item.known_legends.glitch_leaves": "Glitch Leaves",
+  "block.known_legends.glitch_leaves": "Glitch Leaves",
+  "item.known_legends.protective_boots": "Protective Boots"
 }
