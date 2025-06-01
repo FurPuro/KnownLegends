@@ -1,9 +1,6 @@
 package ru.furpuro.known_legends
 
 import net.minecraft.client.Minecraft
-import net.minecraft.client.renderer.ItemBlockRenderTypes
-import net.minecraft.client.renderer.RenderType
-import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.FireBlock
 import net.neoforged.bus.api.SubscribeEvent
@@ -12,18 +9,16 @@ import net.neoforged.fml.common.Mod
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent
 import net.neoforged.fml.event.lifecycle.FMLDedicatedServerSetupEvent
-import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions
-import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent
 import net.neoforged.neoforge.common.NeoForge
-import net.neoforged.neoforge.common.NeoForgeMod
 import org.apache.logging.log4j.Level
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
-import ru.furpuro.known_legends.blocks.ModBlockEntities
 import ru.furpuro.known_legends.blocks.ModBlocks
+import ru.furpuro.known_legends.blocks.entity.ModBlockEntities
 import ru.furpuro.known_legends.custom.EventHandler
 import ru.furpuro.known_legends.data.ModAttachments
 import ru.furpuro.known_legends.fuids.ModFluids
+import ru.furpuro.known_legends.items.ModCreativeModeTabs
 import ru.furpuro.known_legends.items.ModItems
 import thedarkcolour.kotlinforforge.neoforge.forge.MOD_BUS
 import thedarkcolour.kotlinforforge.neoforge.forge.runForDist
@@ -51,7 +46,8 @@ object Known_legends {
         NeoForge.EVENT_BUS.register(EventHandler())
         ModFluids.FLUIDS.register(MOD_BUS)
         ModFluids.FLUID_TYPES.register(MOD_BUS)
-        ModBlockEntities.BLOCK_ENTITY_TYPES.register(MOD_BUS)
+        ModBlockEntities.BLOCK_ENTITIES.register(MOD_BUS)
+        ModCreativeModeTabs.CREATIVE_MODE_TAB.register(MOD_BUS)
 
         val obj = runForDist(
             clientTarget = {

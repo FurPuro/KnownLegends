@@ -1,0 +1,21 @@
+{
+  "item.known_legends.glitch_block_decor": "Декоративный Глюк-Блок",
+  "block.known_legends.glitch_block_decor": "Декоративный Глюк-Блок",
+  "item.known_legends.glitch_block": "Глюк-Блок",
+  "block.known_legends.glitch_block": "Глюк-Блок",
+  "item.known_legends.fix_gas_sprayer": "Распылитель Ремонтирующего газа",
+  "block.known_legends.fix_gas_sprayer": "Распылитель Ремонтирующего газа",
+  "item.known_legends.glitch_leaves": "Глюк-Листва",
+  "block.known_legends.glitch_leaves": "Глюк-Листва",
+
+  "item.known_legends.protective_boots": "Защитные Ботинки",
+  "item.known_legends.gas_mask": "Противогаз",
+  "item.known_legends.fix_powder": "Ремонтирующая Пыль",
+
+  "creativetab.known_legends.known_legends": "Знаменитые Легенды",
+
+  "message.known_legends.setpoints": "Теперь очков: %d",
+  "message.known_legends.getphase": "Текущая фаза: %d (%d очков)",
+  "message.known_legends.broke": "Что-то поломалось...",
+  "message.known_legends.knocking": "Они стучались слабо..."
+}

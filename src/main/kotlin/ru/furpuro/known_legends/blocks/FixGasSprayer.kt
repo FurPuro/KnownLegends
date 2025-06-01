@@ -1,9 +1,7 @@
 package ru.furpuro.known_legends.blocks
 
-import net.minecraft.commands.arguments.CompoundTagArgument
+import com.mojang.serialization.MapCodec
 import net.minecraft.core.BlockPos
-import net.minecraft.core.HolderLookup
-import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.chat.Component
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.util.RandomSource
@@ -12,7 +10,9 @@ import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.Level
+import net.minecraft.world.level.block.BaseEntityBlock
 import net.minecraft.world.level.block.Block
+import net.minecraft.world.level.block.RenderShape
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
@@ -21,9 +21,13 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty
 import net.minecraft.world.level.redstone.Orientation
 import net.minecraft.world.phys.BlockHitResult
 import net.minecraft.world.ticks.TickPriority
+import ru.furpuro.known_legends.blocks.entity.FixGasSprayerEntity
+import ru.furpuro.known_legends.blocks.entity.ModBlockEntities
 import ru.furpuro.known_legends.items.ModItems
 
-class FixGasSprayer(props: Properties) : Block(props) {
+class FixGasSprayer(properties:Properties) : BaseEntityBlock(properties) {
+    val CODEC: MapCodec<FixGasSprayer> = simpleCodec(::FixGasSprayer)
+
     companion object {
         val POWERED: BooleanProperty = BlockStateProperties.POWERED
     }
@@ -36,6 +40,18 @@ class FixGasSprayer(props: Properties) : Block(props) {
         builder.add(POWERED)
     }
 
+    override fun codec(): MapCodec<out BaseEntityBlock> {
+        return CODEC
+    }
+
+    override fun getRenderShape(state: BlockState): RenderShape {
+        return RenderShape.MODEL
+    }
+
+    override fun newBlockEntity(p0: BlockPos, p1: BlockState): BlockEntity {
+        return FixGasSprayerEntity(p0,p1)
+    }
+
     override fun useItemOn(
         stack: ItemStack,
         state: BlockState,
@@ -46,21 +62,19 @@ class FixGasSprayer(props: Properties) : Block(props) {
         hitResult: BlockHitResult
     ): InteractionResult {
         if (!level.isClientSide()) {
-            val be: FixGasSprayerEntity? = ModBlockEntities.FIX_GAS_SPRAYER.get().getBlockEntity(level, pos)
-            if (be != null) {
+            if (level.getBlockEntity(pos) is FixGasSprayerEntity) {
+                val be = level.getBlockEntity(pos) as FixGasSprayerEntity
                 if (stack.item.asItem() == ModItems.FIX_POWDER.get()) {
                     repeat(stack.count) {
-                        if (be.GAS < be.MAX_GAS) {
+                        if (be.gas < be.maxGas) {
                             if (!player.isCreative) {
                                 stack.shrink(1)
                             }
-                            be.GAS += 500
-                            be.GAS.coerceIn(0,be.MAX_GAS)
+                            be.gas += 500
+                            be.gas = be.gas.coerceIn(0,be.maxGas)
                         }
                     }
                 }
-            } else {
-                println("Can't get entity")
             }
         }
 
@@ -75,13 +89,10 @@ class FixGasSprayer(props: Properties) : Block(props) {
         hitResult: BlockHitResult
     ): InteractionResult {
         if (!level.isClientSide()) {
-            val be: FixGasSprayerEntity? = ModBlockEntities.FIX_GAS_SPRAYER.get().getBlockEntity(level, pos)
-            if (be != null) {
-                println(be.blockPos)
-                player.displayClientMessage(Component.literal("Gas: ${be.GAS}"),true)
-                be.GAS.coerceIn(0,be.MAX_GAS)
-            } else {
-                println("Can't get entity")
+            if (level.getBlockEntity(pos) is FixGasSprayerEntity) {
+                val be = level.getBlockEntity(pos) as FixGasSprayerEntity
+                player.displayClientMessage(Component.literal("${be.gas}"),true)
+                be.gas = be.gas.coerceIn(0,be.maxGas)
             }
         }
 
@@ -108,34 +119,22 @@ class FixGasSprayer(props: Properties) : Block(props) {
     }
 
     private fun spreadAir(level: Level, pos: BlockPos) {
-        val be: FixGasSprayerEntity? = ModBlockEntities.FIX_GAS_SPRAYER.get().getBlockEntity(level, pos)
-        if (be != null) {
-            println(be.blockPos)
+        if (level.getBlockEntity(pos) is FixGasSprayerEntity) {
+            val be = level.getBlockEntity(pos) as FixGasSprayerEntity
             val airBlock = ModBlocks.FIX_GAS.get()
             for (dx in -1..1) for (dy in -1..1) for (dz in -1..1) {
                 val target = pos.offset(dx, dy, dz)
-                if (level.getBlockState(target).isAir && be.GAS >= be.GAS_CONSUME) {
+                if (level.getBlockState(target).isAir && be.gas >= be.gasConsume) {
                     level.setBlock(target, airBlock.defaultBlockState(), 3)
-                    be.GAS -= be.GAS_CONSUME
-                    be.GAS.coerceIn(0,be.MAX_GAS)
+                    be.gas -= be.gasConsume
+                    be.gas = be.gas.coerceIn(0,be.maxGas)
                 }
             }
-        } else {
-            println("Can't get entity")
         }
     }
 
     override fun onPlace(state: BlockState, level: Level, pos: BlockPos, oldState: BlockState, movedByPiston: Boolean) {
         if (!level.isClientSide()) {
-            val be = ModBlockEntities.FIX_GAS_SPRAYER.get().create(pos,defaultBlockState())
-                //ModBlockEntities.FIX_GAS_SPRAYER.get().create(pos, state).persistentData
-                //    .let { BlockEntity.loadStatic(pos,defaultBlockState(), it,level.registryAccess()) }
-            if (be != null) {
-                println("Entity is removed: ${be.isRemoved}; valid BlockState: ${be.isValidBlockState(defaultBlockState())}")
-                println("Successfully created ${be.type} entity at $pos")
-            } else {
-                println("Can't create entity at $pos")
-            }
             level.scheduleTick(pos, this, 15, TickPriority.NORMAL)
         }
         super.onPlace(state, level, pos, oldState, movedByPiston)

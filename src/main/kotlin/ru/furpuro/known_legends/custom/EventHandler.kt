@@ -32,7 +32,7 @@ class EventHandler {
             val player = level.players().randomOrNull()
 
             if (player != null) {
-                if (level.getRandom().nextInt(50000) == 0) {
+                if (level.getRandom().nextInt(40000) == 0) {
                     spawnGlitchAir(level, player)
                 }
             }
@@ -75,9 +75,7 @@ class EventHandler {
         val defState = state.block.defaultBlockState()
         val blockId = BuiltInRegistries.BLOCK.getKey(state.block).toString()
         if (level is Level) {
-            println("level is Level when break")
             if (blockId.contains("glitch") && !blockId.contains("decor")) {
-                println("block is glitch")
                 glitchRemoveFunction(level, pos)
             } else {
                 println(blockId)

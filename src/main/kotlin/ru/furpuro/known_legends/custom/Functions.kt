@@ -35,12 +35,12 @@ object Functions {
         if (foundPos != null) {
             level.setBlock(foundPos, ModBlocks.GLITCH_AIR.get().defaultBlockState(), 2)
             level.players().forEach { p ->
-                p.sendSystemMessage(Component.literal("Something broke..."))
+                p.sendSystemMessage(Component.translatable("message.known_legends.broke"))
             }
             println(foundPos)
         } else {
             level.players().forEach { p ->
-                p.sendSystemMessage(Component.literal("They knocking easily..."))
+                p.sendSystemMessage(Component.translatable("message.known_legends.knocking"))
             }
         }
     }
@@ -98,7 +98,7 @@ object Functions {
             level.setBlock(pos,Blocks.AIR.defaultBlockState(),2)
         }
         if (targetState.isAir) {
-            if (90 >= random.nextIntBetweenInclusive(1,100)) {
+            if (95 >= random.nextIntBetweenInclusive(1,100)) {
                 level.setBlock(targetPos, ModBlocks.FIX_GAS.get().defaultBlockState(), 2)
                 if (99 >= random.nextIntBetweenInclusive(1,100)) {
                     level.setBlock(pos,Blocks.AIR.defaultBlockState(),2)
@@ -134,16 +134,11 @@ object Functions {
         }
     }
     fun glitchRemoveFunction(level: Level, pos: BlockPos) {
-        println("new call")
         if (!level.isClientSide) {
-            println("call isn't clientSide")
             val data = level.getData(ModAttachments.POINTS_DATA)
-            println("current: ${data.points}")
-            data.points--
-            data.points--
+            data.points -= 2
 
             level.setBlock(pos, ModBlocks.GLITCH_AIR.get().defaultBlockState(), 2)
-            println("finished! ${data.points}")
         }
     }
 }

@@ -22,13 +22,11 @@ object ModCommands {
                                 val player = try {
                                     ctx.source.playerOrException
                                 } catch (e: Exception) {
-                                    ctx.source.sendFailure(Component.literal("Only player can use this command!"))
                                     return@executes 0
                                 }
 
                                 val level = player.level() as? ServerLevel
                                 if (level == null) {
-                                    ctx.source.sendFailure(Component.literal("Can't get world!"))
                                     return@executes 0
                                 }
 
@@ -46,19 +44,17 @@ object ModCommands {
                                     val player = try {
                                         ctx.source.playerOrException
                                     } catch (e: Exception) {
-                                        ctx.source.sendFailure(Component.literal("Only player can use this command!"))
                                         return@executes 0
                                     }
 
                                     val level = player.level() as? ServerLevel
                                     if (level == null) {
-                                        ctx.source.sendFailure(Component.literal("Can't get world!"))
                                         return@executes 0
                                     }
 
                                     val data = level.getData(ModAttachments.POINTS_DATA)
 
-                                    ctx.source.sendSystemMessage(Component.literal("Current phase is: ${getPhase(data.points)} (${data.points} points)"))
+                                    ctx.source.sendSystemMessage(Component.translatable("message.known_legends.getphase",getPhase(data.points),data.points))
                                     Command.SINGLE_SUCCESS
                                 }
                         ).then(
@@ -70,20 +66,18 @@ object ModCommands {
                                             val player = try {
                                                 ctx.source.playerOrException
                                             } catch (e: Exception) {
-                                                ctx.source.sendFailure(Component.literal("Only player can use this command!"))
                                                 return@executes 0
                                             }
 
                                             val level = player.level() as? ServerLevel
                                             if (level == null) {
-                                                ctx.source.sendFailure(Component.literal("Can't get world!"))
                                                 return@executes 0
                                             }
 
                                             val count = IntegerArgumentType.getInteger(ctx, "number")
                                             val data = level.getData(ModAttachments.POINTS_DATA)
                                             data.points = count
-                                            ctx.source.sendSystemMessage(Component.literal("Now points is: ${data.points}"))
+                                            ctx.source.sendSystemMessage(Component.translatable("message.known_legends.setpoints",data.points))
                                             Command.SINGLE_SUCCESS
                                         }
                                 )

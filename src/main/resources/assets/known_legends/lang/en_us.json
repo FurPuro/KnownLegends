@@ -5,9 +5,17 @@
   "block.known_legends.glitch_block": "Glitch Block",
   "item.known_legends.fix_gas_sprayer": "Fix Gas Sprayer",
   "block.known_legends.fix_gas_sprayer": "Fix Gas Sprayer",
-  "item.known_legends.gas_mask": "Gas Mask",
-  "item.known_legends.fix_powder": "Fix Powder",
   "item.known_legends.glitch_leaves": "Glitch Leaves",
   "block.known_legends.glitch_leaves": "Glitch Leaves",
-  "item.known_legends.protective_boots": "Protective Boots"
+
+  "item.known_legends.protective_boots": "Protective Boots",
+  "item.known_legends.gas_mask": "Gas Mask",
+  "item.known_legends.fix_powder": "Fix Powder",
+
+  "creativetab.known_legends.known_legends": "Known Legends",
+
+  "message.known_legends.setpoints": "Now points is: %d",
+  "message.known_legends.getphase": "Current phase is: %d (%d points)",
+  "message.known_legends.broke": "Something broke...",
+  "message.known_legends.knocking": "They knocking easily..."
 }
