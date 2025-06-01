@@ -1,0 +1,7 @@
+{
+  "loader": "forge:fluid",
+  "textures": {
+    "still": "known_legends:block/glitch_fluid_still",
+    "flowing": "known_legends:block/glitch_fluid_flow"
+  }
+}

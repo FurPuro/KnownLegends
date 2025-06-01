@@ -2,10 +2,13 @@ package ru.furpuro.known_legends.blocks
 
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
+import net.minecraft.world.level.block.LiquidBlock
 import net.minecraft.world.level.block.SoundType
+import net.minecraft.world.level.material.PushReaction
 import net.neoforged.neoforge.registries.DeferredBlock
 import net.neoforged.neoforge.registries.DeferredRegister
 import ru.furpuro.known_legends.Known_legends
+import ru.furpuro.known_legends.fuids.ModFluids
 
 object ModBlocks {
     val REGISTRY: DeferredRegister.Blocks = DeferredRegister.createBlocks(Known_legends.ID)
@@ -57,8 +60,22 @@ object ModBlocks {
 
     val FIX_GAS_SPRAYER: DeferredBlock<FixGasSprayer> = REGISTRY.registerBlock("fix_gas_sprayer") { properties ->
         FixGasSprayer(properties
-            .strength(0.9f,0.6f)
+            .strength(1.2f,0.6f)
             .requiresCorrectToolForDrops()
         )
     }
+
+//    val GLITCH_FLUID_BLOCK: DeferredBlock<LiquidBlock> = REGISTRY.registerBlock("glitch_fluid_block") { properties ->
+//        LiquidBlock(
+//            ModFluids.GLITCH_FLUID.get(),
+//            properties
+//                .replaceable()
+//                .noCollission()
+//                .strength(100.0F)
+//                .pushReaction(PushReaction.DESTROY)
+//                .noLootTable()
+//                .liquid()
+//                .sound(SoundType.EMPTY)
+//        )
+//    }
 }

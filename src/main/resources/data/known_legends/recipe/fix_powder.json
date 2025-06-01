@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "%": "minecraft:obsidian",
+    "@": "minecraft:bone_meal",
+    "D": "minecraft:diamond"
+  },
+  "pattern": [
+    "%D%",
+    "@@@",
+    "%D%"
+  ],
+  "result": {
+    "id": "known_legends:fix_powder",
+    "count": 4
+  }
+}
