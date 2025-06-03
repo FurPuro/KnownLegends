@@ -30,9 +30,45 @@ object ModItems {
         Item.Properties()
     )
 
+    val GLITCH_DIRT: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "glitch_dirt",
+        ModBlocks.GLITCH_DIRT,
+        Item.Properties()
+    )
+
+    val GLITCH_STONE: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "glitch_stone",
+        ModBlocks.GLITCH_STONE,
+        Item.Properties()
+    )
+
+    val GLITCH_LOG: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "glitch_log",
+        ModBlocks.GLITCH_LOG,
+        Item.Properties()
+    )
+
     val FIX_GAS_SPRAYER: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
         "fix_gas_sprayer",
         ModBlocks.FIX_GAS_SPRAYER,
+        Item.Properties()
+    )
+
+    val HERMETIC_WALL: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "hermetic_wall",
+        ModBlocks.HERMETIC_WALL,
+        Item.Properties()
+    )
+
+    val HERMETIC_DOOR: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "hermetic_door",
+        ModBlocks.HERMETIC_DOOR,
+        Item.Properties()
+    )
+
+    val HERMETIC_GLASS: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "hermetic_glass",
+        ModBlocks.HERMETIC_GLASS,
         Item.Properties()
     )
 

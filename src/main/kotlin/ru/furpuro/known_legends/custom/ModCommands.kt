@@ -76,7 +76,7 @@ object ModCommands {
 
                                             val count = IntegerArgumentType.getInteger(ctx, "number")
                                             val data = level.getData(ModAttachments.POINTS_DATA)
-                                            data.points = count
+                                            data.points += count
                                             ctx.source.sendSystemMessage(Component.translatable("message.known_legends.setpoints",data.points))
                                             Command.SINGLE_SUCCESS
                                         }

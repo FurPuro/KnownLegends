@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "known_legends:block/glitch_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "known_legends:block/glitch_log"
+    },
+    "axis=z": {
+      "model": "known_legends:block/glitch_log_horizontal",
+      "x": 90
+    }
+  }
+}

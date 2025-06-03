@@ -1,6 +1,12 @@
 {
   "values": [
     "known_legends:glitch_block",
-    "known_legends:glitch_block_decor"
+    "known_legends:glitch_block_decor",
+    "known_legends:glitch_stone",
+    "known_legends:glitch_dirt",
+    "known_legends:glitch_log",
+    "known_legends:hermetic_wall",
+    "known_legends:hermetic_glass",
+    "known_legends:hermetic_door"
   ]
 }

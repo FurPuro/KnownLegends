@@ -114,7 +114,10 @@ object Known_legends {
         LOGGER.log(Level.INFO, "Hello! This is working!")
 
         val fireBlock = Blocks.FIRE as FireBlock
-        fireBlock.setFlammable(ModBlocks.GLITCH_BLOCK.get(), 3, 5)
-        fireBlock.setFlammable(ModBlocks.GLITCH_LEAVES.get(), 8, 15)
+        fireBlock.setFlammable(ModBlocks.GLITCH_BLOCK.get(), 20, 25)
+        fireBlock.setFlammable(ModBlocks.GLITCH_DIRT.get(), 18, 23)
+        fireBlock.setFlammable(ModBlocks.GLITCH_STONE.get(), 15, 20)
+        fireBlock.setFlammable(ModBlocks.GLITCH_LOG.get(), 22, 27)
+        fireBlock.setFlammable(ModBlocks.GLITCH_LEAVES.get(), 40, 45)
     }
 }

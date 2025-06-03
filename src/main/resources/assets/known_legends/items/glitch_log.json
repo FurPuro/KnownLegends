@@ -2,6 +2,6 @@
   "model": {
     "type": "minecraft:model",
 
-    "model": "known_legends:block/fix_gas_sprayer"
+    "model": "known_legends:block/glitch_log"
   }
 }

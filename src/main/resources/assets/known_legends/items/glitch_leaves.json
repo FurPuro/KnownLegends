@@ -2,6 +2,6 @@
   "model": {
     "type": "minecraft:model",
 
-    "model": "known_legends:item/glitch_leaves"
+    "model": "known_legends:block/glitch_leaves"
   }
 }

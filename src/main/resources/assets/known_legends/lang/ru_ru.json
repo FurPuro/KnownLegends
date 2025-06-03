@@ -7,15 +7,28 @@
   "block.known_legends.fix_gas_sprayer": "Распылитель Ремонтирующего газа",
   "item.known_legends.glitch_leaves": "Глюк-Листва",
   "block.known_legends.glitch_leaves": "Глюк-Листва",
+  "item.known_legends.hermetic_wall": "Герметичная Стена",
+  "block.known_legends.hermetic_wall": "Герметичная Стена",
+  "item.known_legends.hermetic_glass": "Герметичное Стекло",
+  "block.known_legends.hermetic_glass": "Герметичное Стекло",
+  "item.known_legends.glitch_dirt": "Глюк-Земля",
+  "block.known_legends.glitch_dirt": "Глюк-Земля",
+  "item.known_legends.hermetic_door": "Герметичная Дверь",
+  "block.known_legends.hermetic_door": "Герметичная Дверь",
+  "item.known_legends.glitch_stone": "Глюк-Камень",
+  "block.known_legends.glitch_stone": "Глюк-Камень",
+  "item.known_legends.glitch_log": "Глюк-Бревно",
+  "block.known_legends.glitch_log": "Глюк-Бревно",
 
   "item.known_legends.protective_boots": "Защитные Ботинки",
   "item.known_legends.gas_mask": "Противогаз",
   "item.known_legends.fix_powder": "Ремонтирующая Пыль",
 
-  "creativetab.known_legends.known_legends": "Знаменитые Легенды",
+  "creativetab.known_legends.glitch": "Глюки",
+  "creativetab.known_legends.defense": "Защита",
 
   "message.known_legends.setpoints": "Теперь очков: %d",
   "message.known_legends.getphase": "Текущая фаза: %d (%d очков)",
   "message.known_legends.broke": "Что-то поломалось...",
-  "message.known_legends.knocking": "Они стучались слабо..."
+  "message.known_legends.knocking": "Они стучатся слабо..."
 }

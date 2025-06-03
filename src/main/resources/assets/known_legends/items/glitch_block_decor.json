@@ -2,6 +2,6 @@
   "model": {
     "type": "minecraft:model",
 
-    "model": "known_legends:item/glitch_block"
+    "model": "known_legends:block/glitch_block"
   }
 }

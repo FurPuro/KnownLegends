@@ -2,7 +2,8 @@
   "layers": {
     "humanoid": [
       {
-        "texture": "known_legends:protective_suit"
+        "texture": "known_legends:protective_suit",
+        "render_type": "translucent"
       },
       {
         "texture": "known_legends:protective_suit_overlay"
