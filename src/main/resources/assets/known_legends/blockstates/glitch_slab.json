@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "known_legends:block/glitch_slab"
+    },
+    "type=double": {
+      "model": "known_legends:block/glitch_block"
+    },
+    "type=top": {
+      "model": "known_legends:block/glitch_slab_top"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "known_legends:block/glitch_grass"
+  },
+  "render_type": "cutout"
+}

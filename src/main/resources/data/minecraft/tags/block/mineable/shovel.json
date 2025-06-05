@@ -1,5 +1,7 @@
 {
   "values": [
-    "known_legends:glitch_dirt"
+    "known_legends:glitch_dirt",
+    "known_legends:glitch_sand",
+    "known_legends:glitch_gravel"
   ]
 }

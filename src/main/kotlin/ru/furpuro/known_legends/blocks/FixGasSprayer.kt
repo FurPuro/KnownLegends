@@ -70,7 +70,7 @@ class FixGasSprayer(properties:Properties) : BaseEntityBlock(properties) {
                             if (!player.isCreative) {
                                 stack.shrink(1)
                             }
-                            be.gas += 500
+                            be.gas += 5000
                             be.gas = be.gas.coerceIn(0,be.maxGas)
                         }
                     }

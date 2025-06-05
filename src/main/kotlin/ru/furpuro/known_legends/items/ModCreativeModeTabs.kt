@@ -18,10 +18,16 @@ object ModCreativeModeTabs {
             .displayItems {itemDisplayParameters,output ->
                 output.accept(ModItems.GLITCH_BLOCK)
                 output.accept(ModItems.GLITCH_BLOCK_DECOR)
+                output.accept(ModItems.GLITCH_STAIRS)
+                output.accept(ModItems.GLITCH_SLAB)
+                output.accept(ModItems.GLITCH_FENCE)
                 output.accept(ModItems.GLITCH_LEAVES)
                 output.accept(ModItems.GLITCH_DIRT)
+                output.accept(ModItems.GLITCH_GRASS)
                 output.accept(ModItems.GLITCH_STONE)
                 output.accept(ModItems.GLITCH_LOG)
+                output.accept(ModItems.GLITCH_SAND)
+                output.accept(ModItems.GLITCH_GRAVEL)
             }
             .build()
     }

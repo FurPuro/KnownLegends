@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "": [
+      { "model": "known_legends:block/glitch_sand", "x": 0 },
+      { "model": "known_legends:block/glitch_sand", "x": 90 },
+      { "model": "known_legends:block/glitch_sand", "x": 180 },
+      { "model": "known_legends:block/glitch_sand", "x": 270 },
+      { "model": "known_legends:block/glitch_sand", "y": 0 },
+      { "model": "known_legends:block/glitch_sand", "y": 90 },
+      { "model": "known_legends:block/glitch_sand", "y": 180 },
+      { "model": "known_legends:block/glitch_sand", "y": 270 },
+      { "model": "known_legends:block/glitch_sand", "z": 0 },
+      { "model": "known_legends:block/glitch_sand", "z": 90 },
+      { "model": "known_legends:block/glitch_sand", "z": 180 },
+      { "model": "known_legends:block/glitch_sand", "z": 270 }
+    ]
+  }
+}

@@ -3,6 +3,7 @@ package ru.furpuro.known_legends.blocks
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.DoorBlock
 import net.minecraft.world.level.block.SoundType
+import net.minecraft.world.level.block.StairBlock
 import net.minecraft.world.level.block.TransparentBlock
 import net.minecraft.world.level.block.state.properties.BlockSetType
 import net.neoforged.neoforge.registries.DeferredBlock
@@ -43,6 +44,66 @@ object ModBlocks {
             .randomTicks()
             .sound(SoundType.PACKED_MUD)
             .requiresCorrectToolForDrops()
+        )
+    }
+
+    val GLITCH_SAND: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_sand") { properties ->
+        GlitchBlock(properties
+            .strength(1f,1000f)
+            .randomTicks()
+            .sound(SoundType.SOUL_SAND)
+            .requiresCorrectToolForDrops()
+        )
+    }
+
+    val GLITCH_GRAVEL: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_gravel") { properties ->
+        GlitchBlock(properties
+            .strength(1.1f,1000f)
+            .randomTicks()
+            .sound(SoundType.SUSPICIOUS_GRAVEL)
+            .requiresCorrectToolForDrops()
+        )
+    }
+
+    val GLITCH_GRASS: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_grass") { properties ->
+        GlitchGrassBlock(properties
+            .randomTicks()
+            .sound(SoundType.GRASS)
+            .instabreak()
+            .noCollission()
+            .noLootTable()
+            .replaceable()
+        )
+    }
+
+    val GLITCH_STAIRS: DeferredBlock<GlitchStairsBlock> = REGISTRY.registerBlock("glitch_stairs") { properties ->
+        GlitchStairsBlock(
+            GLITCH_BLOCK.get().defaultBlockState(),
+            properties
+            .strength(1.4f,1000f)
+            .randomTicks()
+            .sound(SoundType.MUD_BRICKS)
+            .requiresCorrectToolForDrops()
+        )
+    }
+
+    val GLITCH_SLAB: DeferredBlock<GlitchSlabBlock> = REGISTRY.registerBlock("glitch_slab") { properties ->
+        GlitchSlabBlock(
+            properties
+                .strength(1.3f,1000f)
+                .randomTicks()
+                .sound(SoundType.MUD_BRICKS)
+                .requiresCorrectToolForDrops()
+        )
+    }
+
+    val GLITCH_FENCE: DeferredBlock<GlitchFenceBlock> = REGISTRY.registerBlock("glitch_fence") { properties ->
+        GlitchFenceBlock(
+            properties
+                .strength(1.3f,1000f)
+                .randomTicks()
+                .sound(SoundType.MUD_BRICKS)
+                .requiresCorrectToolForDrops()
         )
     }
 
@@ -87,7 +148,7 @@ object ModBlocks {
     val FIX_GAS_SPRAYER: DeferredBlock<FixGasSprayer> = REGISTRY.registerBlock("fix_gas_sprayer") { properties ->
         FixGasSprayer(
             properties
-                .strength(2.2f,2f)
+                .strength(2.2f,4f)
                 .sound(SoundType.METAL)
                 .requiresCorrectToolForDrops()
         )
@@ -98,7 +159,7 @@ object ModBlocks {
     val HERMETIC_WALL: DeferredBlock<Block> = REGISTRY.registerBlock("hermetic_wall") { properties ->
         Block(
             properties
-                .strength(2f,4f)
+                .strength(2f,7f)
                 .requiresCorrectToolForDrops()
                 .sound(SoundType.STONE)
         )
@@ -108,7 +169,7 @@ object ModBlocks {
         DoorBlock(
             BlockSetType.STONE,
             properties
-                .strength(2f,4f)
+                .strength(2f,7f)
                 .requiresCorrectToolForDrops()
                 .sound(SoundType.STONE)
                 .noOcclusion()
@@ -118,7 +179,7 @@ object ModBlocks {
     val HERMETIC_GLASS: DeferredBlock<Block> = REGISTRY.registerBlock("hermetic_glass") { properties ->
         TransparentBlock(
             properties
-                .strength(0.4f,2.5f)
+                .strength(0.4f,5.5f)
                 .sound(SoundType.GLASS)
                 .noOcclusion()
         )

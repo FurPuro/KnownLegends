@@ -63,7 +63,7 @@ class EventHandler {
         if (block == ModBlocks.GLITCH_AIR.get() && (event.mode == FogRenderer.FogMode.FOG_TERRAIN || event.mode == FogRenderer.FogMode.FOG_SKY)) {
             event.nearPlaneDistance = 0.05f
             event.farPlaneDistance = 0.2f
-            event.fogShape = FogShape.CYLINDER
+            event.fogShape = FogShape.SPHERE
         }
     }
 

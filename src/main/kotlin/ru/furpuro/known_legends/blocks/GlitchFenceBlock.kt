@@ -16,16 +16,21 @@ import net.minecraft.world.level.Level
 import net.minecraft.world.level.LevelAccessor
 import net.minecraft.world.level.LevelReader
 import net.minecraft.world.level.block.Block
+import net.minecraft.world.level.block.FenceBlock
+import net.minecraft.world.level.block.SlabBlock
+import net.minecraft.world.level.block.StairBlock
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
+import net.minecraft.world.level.block.state.properties.Half
+import net.minecraft.world.level.block.state.properties.StairsShape
 import net.minecraft.world.ticks.TickPriority
 import ru.furpuro.known_legends.custom.Functions.glitchBlockStep
 import ru.furpuro.known_legends.custom.Functions.spreadGlitch
 import ru.furpuro.known_legends.data.ModAttachments
 import ru.furpuro.known_legends.items.ModItems
 
-open class GlitchBlock(props: Properties) : Block(props.randomTicks()) {
+open class GlitchFenceBlock(props: Properties) : FenceBlock(props.randomTicks()) {
     override fun onPlace(state: BlockState, level: Level, pos: BlockPos, oldState: BlockState, movedByPiston: Boolean) {
         if (!level.isClientSide()) {
             val data = level.getData(ModAttachments.POINTS_DATA)

@@ -19,6 +19,21 @@
   "block.known_legends.glitch_stone": "Глюк-Камень",
   "item.known_legends.glitch_log": "Глюк-Бревно",
   "block.known_legends.glitch_log": "Глюк-Бревно",
+  "item.known_legends.glitch_sand": "Глюк-Песок",
+  "block.known_legends.glitch_sand": "Глюк-Песок",
+  "item.known_legends.glitch_gravel": "Глюк-Гравий",
+  "block.known_legends.glitch_gravel": "Глюк-Гравий",
+  "item.known_legends.glitch_slab": "Глюк-Плита",
+  "block.known_legends.glitch_slab": "Глюк-Плита",
+  "item.known_legends.glitch_stairs": "Глюк-Ступени",
+  "block.known_legends.glitch_stairs": "Глюк-Ступени",
+  "item.known_legends.glitch_fence": "Глюк-Забор",
+  "block.known_legends.glitch_fence": "Глюк-Забор",
+  "item.known_legends.glitch_grass": "Глюк-Трава",
+  "block.known_legends.glitch_grass": "Глюк-Трава",
+
+  "effect.known_legends.glitch": "Глюк",
+  "effect.known_legends.glitch.description": "Медленно превращает тебя в сущность глюка",
 
   "item.known_legends.protective_boots": "Защитные Ботинки",
   "item.known_legends.gas_mask": "Противогаз",
@@ -29,6 +44,6 @@
 
   "message.known_legends.setpoints": "Теперь очков: %d",
   "message.known_legends.getphase": "Текущая фаза: %d (%d очков)",
-  "message.known_legends.broke": "Что-то поломалось...",
-  "message.known_legends.knocking": "Они стучатся слабо..."
+  "message.known_legends.broke": "§c§oЧто-то поломалось...",
+  "message.known_legends.knocking": "§e§oОни стучатся слабо..."
 }

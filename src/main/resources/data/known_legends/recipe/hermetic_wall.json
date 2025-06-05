@@ -5,11 +5,10 @@
     "minecraft:stone",
     "known_legends:fix_powder",
     "known_legends:fix_powder",
-    "known_legends:fix_powder",
     "known_legends:fix_powder"
   ],
   "result": {
     "id": "known_legends:hermetic_wall",
-    "count": 4
+    "count": 8
   }
 }

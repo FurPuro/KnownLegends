@@ -19,6 +19,21 @@
   "block.known_legends.glitch_stone": "Glitch-Stone",
   "item.known_legends.glitch_log": "Glitch-Log",
   "block.known_legends.glitch_log": "Glitch-Log",
+  "item.known_legends.glitch_sand": "Glitch-Sand",
+  "block.known_legends.glitch_sand": "Glitch-Sand",
+  "item.known_legends.glitch_gravel": "Glitch-Gravel",
+  "block.known_legends.glitch_gravel": "Glitch-Gravel",
+  "item.known_legends.glitch_slab": "Glitch-Slab",
+  "block.known_legends.glitch_slab": "Glitch-Slab",
+  "item.known_legends.glitch_stairs": "Glitch-Stairs",
+  "block.known_legends.glitch_stairs": "Glitch-Stairs",
+  "item.known_legends.glitch_fence": "Glitch-Fence",
+  "block.known_legends.glitch_fence": "Glitch-Fence",
+  "item.known_legends.glitch_grass": "Glitch-Grass",
+  "block.known_legends.glitch_grass": "Glitch-Grass",
+
+  "effect.known_legends.glitch": "Glitch",
+  "effect.known_legends.glitch.description": "Slowly transforms you into glitch entity",
 
   "item.known_legends.protective_boots": "Protective Boots",
   "item.known_legends.gas_mask": "Gas Mask",
@@ -29,6 +44,6 @@
 
   "message.known_legends.setpoints": "Now points is: %d",
   "message.known_legends.getphase": "Current phase is: %d (%d points)",
-  "message.known_legends.broke": "Something broke...",
-  "message.known_legends.knocking": "They knocking easily..."
+  "message.known_legends.broke": "§c§oSomething broke...",
+  "message.known_legends.knocking": "§e§oThey knocking easily..."
 }

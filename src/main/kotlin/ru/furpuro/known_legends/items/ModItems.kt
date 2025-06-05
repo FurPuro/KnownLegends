@@ -42,9 +42,45 @@ object ModItems {
         Item.Properties()
     )
 
+    val GLITCH_SAND: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "glitch_sand",
+        ModBlocks.GLITCH_SAND,
+        Item.Properties()
+    )
+
+    val GLITCH_GRAVEL: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "glitch_gravel",
+        ModBlocks.GLITCH_GRAVEL,
+        Item.Properties()
+    )
+
     val GLITCH_LOG: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
         "glitch_log",
         ModBlocks.GLITCH_LOG,
+        Item.Properties()
+    )
+
+    val GLITCH_STAIRS: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "glitch_stairs",
+        ModBlocks.GLITCH_STAIRS,
+        Item.Properties()
+    )
+
+    val GLITCH_SLAB: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "glitch_slab",
+        ModBlocks.GLITCH_SLAB,
+        Item.Properties()
+    )
+
+    val GLITCH_FENCE: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "glitch_fence",
+        ModBlocks.GLITCH_FENCE,
+        Item.Properties()
+    )
+
+    val GLITCH_GRASS: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "glitch_grass",
+        ModBlocks.GLITCH_GRASS,
         Item.Properties()
     )
 
