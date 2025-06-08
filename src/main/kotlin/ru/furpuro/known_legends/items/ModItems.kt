@@ -84,6 +84,30 @@ object ModItems {
         Item.Properties()
     )
 
+    val GLITCH_GLASS: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "glitch_glass",
+        ModBlocks.GLITCH_GLASS,
+        Item.Properties()
+    )
+
+    val GLITCH_GLASS_PANE: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "glitch_glass_pane",
+        ModBlocks.GLITCH_GLASS_PANE,
+        Item.Properties()
+    )
+
+    val GLITCH_PLANKS: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "glitch_planks",
+        ModBlocks.GLITCH_PLANKS,
+        Item.Properties()
+    )
+
+    val GLITCH_COBBLESTONE: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "glitch_cobblestone",
+        ModBlocks.GLITCH_COBBLESTONE,
+        Item.Properties()
+    )
+
     val FIX_GAS_SPRAYER: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
         "fix_gas_sprayer",
         ModBlocks.FIX_GAS_SPRAYER,

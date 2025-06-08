@@ -17,6 +17,7 @@ import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.FenceBlock
+import net.minecraft.world.level.block.IronBarsBlock
 import net.minecraft.world.level.block.SlabBlock
 import net.minecraft.world.level.block.StairBlock
 import net.minecraft.world.level.block.state.BlockState
@@ -84,7 +85,7 @@ object Functions {
     fun placeGlitch(blockId: String,phase: Int,random: RandomSource,targetState: BlockState,level: ServerLevel,pos: BlockPos,targetPos: BlockPos) {
         if ( ( (blockId.contains("glitch") && blockId.contains("decor")) || !blockId.contains("glitch") ) && !blockId.contains("hermetic")) {
             if (phase >= 2) {
-                if (10 >= random.nextIntBetweenInclusive(1,100)) {
+                if (5 >= random.nextIntBetweenInclusive(1,100)) {
                     if (level.getBlockState(pos.above()).isAir && level.getBlockState(pos).isSolidRender) {
                         level.setBlock(pos.above(),ModBlocks.GLITCH_GRASS.get().defaultBlockState(),2)
                     }
@@ -103,11 +104,25 @@ object Functions {
                             level.setBlock(targetPos, ModBlocks.GLITCH_GRAVEL.get().defaultBlockState(), 2)
                         } else if (targetState.`is`(BlockTags.LOGS)) {
                             level.setBlock(targetPos, ModBlocks.GLITCH_LOG.get().defaultBlockState().setValue(BlockStateProperties.AXIS,targetState.getValue(BlockStateProperties.AXIS)), 2)
+                        } else if (targetState.`is`(BlockTags.PLANKS)) {
+                            level.setBlock(targetPos, ModBlocks.GLITCH_PLANKS.get().defaultBlockState(), 2)
+                        } else if (blockId.contains("glass")) {
+                            level.setBlock(targetPos, ModBlocks.GLITCH_GLASS.get().defaultBlockState(), 2)
+                        } else if (blockId.contains("cobble")) {
+                            level.setBlock(targetPos, ModBlocks.GLITCH_COBBLESTONE.get().defaultBlockState(), 2)
                         } else {
                             level.setBlock(targetPos, ModBlocks.GLITCH_BLOCK.get().defaultBlockState(), 2)
                         }
                     } else if (targetState.`is`(BlockTags.LEAVES)) {
                         level.setBlock(targetPos, ModBlocks.GLITCH_LEAVES.get().defaultBlockState(), 2)
+                    } else if (blockId.contains("glass_pane")) {
+                        val waterlogged = targetState.getValue(IronBarsBlock.WATERLOGGED)
+                        val east = targetState.getValue(IronBarsBlock.EAST)
+                        val west = targetState.getValue(IronBarsBlock.WEST)
+                        val north = targetState.getValue(IronBarsBlock.NORTH)
+                        val south = targetState.getValue(IronBarsBlock.SOUTH)
+
+                        level.setBlock(targetPos, ModBlocks.GLITCH_GLASS_PANE.get().defaultBlockState().setValue(IronBarsBlock.WATERLOGGED,waterlogged).setValue(IronBarsBlock.EAST,east).setValue(IronBarsBlock.WEST,west).setValue(IronBarsBlock.NORTH,north).setValue(IronBarsBlock.SOUTH,south), 2)
                     } else if (targetState.`is`(BlockTags.FENCES)) {
                         val waterlogged = targetState.getValue(FenceBlock.WATERLOGGED)
                         val east = targetState.getValue(FenceBlock.EAST)

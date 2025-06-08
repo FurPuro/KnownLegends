@@ -18,6 +18,7 @@ import ru.furpuro.known_legends.blocks.entity.ModBlockEntities
 import ru.furpuro.known_legends.custom.EventHandler
 import ru.furpuro.known_legends.data.ModAttachments
 import ru.furpuro.known_legends.effects.ModMobEffects
+import ru.furpuro.known_legends.entities.ModEntityTypes
 import ru.furpuro.known_legends.fuids.ModFluids
 import ru.furpuro.known_legends.items.ModCreativeModeTabs
 import ru.furpuro.known_legends.items.ModItems
@@ -50,6 +51,7 @@ object Known_legends {
         ModBlockEntities.BLOCK_ENTITIES.register(MOD_BUS)
         ModCreativeModeTabs.CREATIVE_MODE_TAB.register(MOD_BUS)
         ModMobEffects.REGISTRY.register(MOD_BUS)
+        ModEntityTypes.ENTITY_TYPES.register(MOD_BUS)
 
         val obj = runForDist(
             clientTarget = {
@@ -117,6 +119,8 @@ object Known_legends {
 
         val fireBlock = Blocks.FIRE as FireBlock
         fireBlock.setFlammable(ModBlocks.GLITCH_BLOCK.get(), 20, 25)
+        fireBlock.setFlammable(ModBlocks.GLITCH_GLASS.get(), 20, 25)
+        fireBlock.setFlammable(ModBlocks.GLITCH_GLASS_PANE.get(), 20, 25)
         fireBlock.setFlammable(ModBlocks.GLITCH_STAIRS.get(), 20, 25)
         fireBlock.setFlammable(ModBlocks.GLITCH_SLAB.get(), 20, 25)
         fireBlock.setFlammable(ModBlocks.GLITCH_FENCE.get(), 20, 25)
@@ -125,7 +129,9 @@ object Known_legends {
         fireBlock.setFlammable(ModBlocks.GLITCH_SAND.get(), 18, 23)
         fireBlock.setFlammable(ModBlocks.GLITCH_GRAVEL.get(), 18, 23)
         fireBlock.setFlammable(ModBlocks.GLITCH_STONE.get(), 15, 20)
+        fireBlock.setFlammable(ModBlocks.GLITCH_COBBLESTONE.get(), 15, 20)
         fireBlock.setFlammable(ModBlocks.GLITCH_LOG.get(), 22, 27)
+        fireBlock.setFlammable(ModBlocks.GLITCH_PLANKS.get(), 25, 30)
         fireBlock.setFlammable(ModBlocks.GLITCH_LEAVES.get(), 40, 45)
     }
 }

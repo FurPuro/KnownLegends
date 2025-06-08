@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/template_glass_pane_post",
+  "textures": {
+    "edge": "known_legends:block/glitch_glass_pane_top",
+    "pane": "known_legends:block/glitch_glass"
+  },
+  "render_type": "translucent"
+}

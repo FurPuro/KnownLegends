@@ -25,9 +25,13 @@ object ModCreativeModeTabs {
                 output.accept(ModItems.GLITCH_DIRT)
                 output.accept(ModItems.GLITCH_GRASS)
                 output.accept(ModItems.GLITCH_STONE)
+                output.accept(ModItems.GLITCH_COBBLESTONE)
                 output.accept(ModItems.GLITCH_LOG)
+                output.accept(ModItems.GLITCH_PLANKS)
                 output.accept(ModItems.GLITCH_SAND)
                 output.accept(ModItems.GLITCH_GRAVEL)
+                output.accept(ModItems.GLITCH_GLASS)
+                output.accept(ModItems.GLITCH_GLASS_PANE)
             }
             .build()
     }

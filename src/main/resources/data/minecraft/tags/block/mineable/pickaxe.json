@@ -7,7 +7,8 @@
     "known_legends:fix_gas_sprayer",
     "known_legends:glitch_stone",
     "known_legends:hermetic_wall",
-    "known_legends:hermetic_glass",
-    "known_legends:hermetic_door"
+    "known_legends:hermetic_door",
+    "known_legends:glitch_fence",
+    "known_legends:glitch_cobblestone"
   ]
 }

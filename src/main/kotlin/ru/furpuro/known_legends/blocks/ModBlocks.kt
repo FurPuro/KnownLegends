@@ -47,6 +47,15 @@ object ModBlocks {
         )
     }
 
+    val GLITCH_COBBLESTONE: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_cobblestone") { properties ->
+        GlitchBlock(properties
+            .strength(2f,1000f)
+            .randomTicks()
+            .sound(SoundType.PACKED_MUD)
+            .requiresCorrectToolForDrops()
+        )
+    }
+
     val GLITCH_SAND: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_sand") { properties ->
         GlitchBlock(properties
             .strength(1f,1000f)
@@ -116,11 +125,38 @@ object ModBlocks {
         )
     }
 
+    val GLITCH_PLANKS: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_planks") { properties ->
+        GlitchRotatedBlock(properties
+            .strength(1.4f,1000f)
+            .randomTicks()
+            .sound(SoundType.PACKED_MUD)
+            .requiresCorrectToolForDrops()
+        )
+    }
+
     val GLITCH_LEAVES: DeferredBlock<GlitchTransparentBlock> = REGISTRY.registerBlock("glitch_leaves") { properties ->
         GlitchTransparentBlock(properties
             .strength(0.3f,1000f)
             .randomTicks()
             .sound(SoundType.GRASS)
+            .noOcclusion()
+        )
+    }
+
+    val GLITCH_GLASS: DeferredBlock<GlitchTransparentBlock> = REGISTRY.registerBlock("glitch_glass") { properties ->
+        GlitchTransparentBlock(properties
+            .strength(0.6f,1000f)
+            .randomTicks()
+            .sound(SoundType.GLASS)
+            .noOcclusion()
+        )
+    }
+
+    val GLITCH_GLASS_PANE: DeferredBlock<GlitchBarBlock> = REGISTRY.registerBlock("glitch_glass_pane") { properties ->
+        GlitchBarBlock(properties
+            .strength(0.55f,1000f)
+            .randomTicks()
+            .sound(SoundType.GLASS)
             .noOcclusion()
         )
     }
@@ -134,6 +170,7 @@ object ModBlocks {
             .noOcclusion()
         )
     }
+
 
     val FIX_GAS: DeferredBlock<FixGas> = REGISTRY.registerBlock("fix_gas") { properties ->
         FixGas(properties
@@ -153,8 +190,6 @@ object ModBlocks {
                 .requiresCorrectToolForDrops()
         )
     }
-
-    //TODO: Сделать герметичные блоки и дверь.
 
     val HERMETIC_WALL: DeferredBlock<Block> = REGISTRY.registerBlock("hermetic_wall") { properties ->
         Block(

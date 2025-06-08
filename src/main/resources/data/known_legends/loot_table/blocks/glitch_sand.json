@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        },
+        {
+          "condition": "minecraft:match_tool"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "known_legends:glitch_sand"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "known_legends:blocks/glitch_sand"
+}

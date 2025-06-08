@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "": [
+      { "model": "known_legends:block/glitch_glass", "x": 0 },
+      { "model": "known_legends:block/glitch_glass", "x": 90 },
+      { "model": "known_legends:block/glitch_glass", "x": 180 },
+      { "model": "known_legends:block/glitch_glass", "x": 270 },
+      { "model": "known_legends:block/glitch_glass", "y": 0 },
+      { "model": "known_legends:block/glitch_glass", "y": 90 },
+      { "model": "known_legends:block/glitch_glass", "y": 180 },
+      { "model": "known_legends:block/glitch_glass", "y": 270 },
+      { "model": "known_legends:block/glitch_glass", "z": 0 },
+      { "model": "known_legends:block/glitch_glass", "z": 90 },
+      { "model": "known_legends:block/glitch_glass", "z": 180 },
+      { "model": "known_legends:block/glitch_glass", "z": 270 }
+    ]
+  }
+}
