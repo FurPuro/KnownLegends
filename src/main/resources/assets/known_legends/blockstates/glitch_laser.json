@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "": [
+      { "model": "known_legends:block/glitch_laser", "z": 0 },
+      { "model": "known_legends:block/glitch_laser", "z": 90 },
+      { "model": "known_legends:block/glitch_laser", "z": 180 },
+      { "model": "known_legends:block/glitch_laser", "z": 270 }
+    ]
+  }
+}
