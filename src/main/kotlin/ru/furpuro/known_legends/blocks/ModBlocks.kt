@@ -30,7 +30,7 @@ object ModBlocks {
     }
 
     val GLITCH_LASER: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_laser") { properties ->
-        GlitchBlock(properties
+        GlitchLaser(properties
             .strength(2.6f,1000f)
             .requiresCorrectToolForDrops()
             .randomTicks()
@@ -209,6 +209,15 @@ object ModBlocks {
         )
     }
 
+    val CRACKED_HERMETIC_WALL: DeferredBlock<Block> = REGISTRY.registerBlock("cracked_hermetic_wall") { properties ->
+        Block(
+            properties
+                .strength(1.95f,7f)
+                .requiresCorrectToolForDrops()
+                .sound(SoundType.STONE)
+        )
+    }
+
     val HERMETIC_DOOR: DeferredBlock<Block> = REGISTRY.registerBlock("hermetic_door") { properties ->
         DoorBlock(
             BlockSetType.STONE,
@@ -224,6 +233,15 @@ object ModBlocks {
         TransparentBlock(
             properties
                 .strength(0.8f,5.5f)
+                .sound(SoundType.GLASS)
+                .noOcclusion()
+        )
+    }
+
+    val CRACKED_HERMETIC_GLASS: DeferredBlock<Block> = REGISTRY.registerBlock("cracked_hermetic_glass") { properties ->
+        TransparentBlock(
+            properties
+                .strength(0.75f,5.5f)
                 .sound(SoundType.GLASS)
                 .noOcclusion()
         )

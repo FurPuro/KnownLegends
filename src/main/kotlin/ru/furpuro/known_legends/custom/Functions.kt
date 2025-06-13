@@ -84,8 +84,15 @@ object Functions {
     }
     fun placeGlitch(blockId: String,phase: Int,random: RandomSource,targetState: BlockState,level: ServerLevel,pos: BlockPos,targetPos: BlockPos) {
         if ( ( (blockId.contains("glitch") && blockId.contains("decor")) || !blockId.contains("glitch") ) && !blockId.contains("hermetic")) {
+            if (phase >= 3) {
+                if (3 >= random.nextIntBetweenInclusive(1,100)) {
+                    if (level.getBlockState(pos.above()).isAir && level.getBlockState(pos).isSolidRender) {
+                        level.setBlock(pos.above(),ModBlocks.GLITCH_LASER.get().defaultBlockState(),2)
+                    }
+                }
+            }
             if (phase >= 2) {
-                if (5 >= random.nextIntBetweenInclusive(1,100)) {
+                if (2 >= random.nextIntBetweenInclusive(1,100)) {
                     if (level.getBlockState(pos.above()).isAir && level.getBlockState(pos).isSolidRender) {
                         level.setBlock(pos.above(),ModBlocks.GLITCH_GRASS.get().defaultBlockState(),2)
                     }
@@ -167,10 +174,18 @@ object Functions {
                 }
             }
 
-        } else if (blockId.contains("hermetic") && blockId.contains("glass")) {
-            if (1 >= random.nextInt(1,400)) { // 0.25%
-                level.destroyBlock(targetPos,false)
-                level.setBlock(targetPos, ModBlocks.GLITCH_AIR.get().defaultBlockState(), 2)
+        } else if (blockId.contains("hermetic")) {
+            if (1 >= random.nextInt(1,375)) { // ~ 0.27%
+                if (blockId.contains("glass") && !blockId.contains("cracked")) {
+                    level.destroyBlock(targetPos,false)
+                    level.setBlock(targetPos, ModBlocks.CRACKED_HERMETIC_GLASS.get().defaultBlockState(), 2)
+                } else if (blockId.contains("wall") && !blockId.contains("cracked")) {
+                    level.destroyBlock(targetPos,false)
+                    level.setBlock(targetPos, ModBlocks.CRACKED_HERMETIC_WALL.get().defaultBlockState(), 2)
+                } else if (blockId.contains("cracked")) {
+                    level.destroyBlock(targetPos,false)
+                    level.setBlock(targetPos, ModBlocks.GLITCH_AIR.get().defaultBlockState(), 2)
+                }
             }
         }
     }
