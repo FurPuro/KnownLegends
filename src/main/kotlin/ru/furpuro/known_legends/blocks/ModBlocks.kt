@@ -22,7 +22,16 @@ object ModBlocks {
 
     val GLITCH_BLOCK: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_block") { properties ->
         GlitchBlock(properties
-            .strength(1.6f,1000f)
+            .strength(2f,1000f)
+            .requiresCorrectToolForDrops()
+            .randomTicks()
+            .sound(SoundType.MUD_BRICKS)
+        )
+    }
+
+    val GLITCH_LASER: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_laser") { properties ->
+        GlitchLaser(properties
+            .strength(2.6f,1000f)
             .requiresCorrectToolForDrops()
             .randomTicks()
             .sound(SoundType.MUD_BRICKS)
@@ -31,7 +40,7 @@ object ModBlocks {
 
     val GLITCH_DIRT: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_dirt") { properties ->
         GlitchBlock(properties
-            .strength(1.2f,1000f)
+            .strength(1.6f,1000f)
             .randomTicks()
             .sound(SoundType.MUD)
             .requiresCorrectToolForDrops()
@@ -40,7 +49,7 @@ object ModBlocks {
 
     val GLITCH_STONE: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_stone") { properties ->
         GlitchBlock(properties
-            .strength(1.8f,1000f)
+            .strength(2.2f,1000f)
             .randomTicks()
             .sound(SoundType.PACKED_MUD)
             .requiresCorrectToolForDrops()
@@ -49,7 +58,7 @@ object ModBlocks {
 
     val GLITCH_COBBLESTONE: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_cobblestone") { properties ->
         GlitchBlock(properties
-            .strength(2f,1000f)
+            .strength(2.4f,1000f)
             .randomTicks()
             .sound(SoundType.PACKED_MUD)
             .requiresCorrectToolForDrops()
@@ -58,7 +67,7 @@ object ModBlocks {
 
     val GLITCH_SAND: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_sand") { properties ->
         GlitchBlock(properties
-            .strength(1f,1000f)
+            .strength(1.4f,1000f)
             .randomTicks()
             .sound(SoundType.SOUL_SAND)
             .requiresCorrectToolForDrops()
@@ -67,7 +76,7 @@ object ModBlocks {
 
     val GLITCH_GRAVEL: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_gravel") { properties ->
         GlitchBlock(properties
-            .strength(1.1f,1000f)
+            .strength(1.5f,1000f)
             .randomTicks()
             .sound(SoundType.SUSPICIOUS_GRAVEL)
             .requiresCorrectToolForDrops()
@@ -89,7 +98,7 @@ object ModBlocks {
         GlitchStairsBlock(
             GLITCH_BLOCK.get().defaultBlockState(),
             properties
-            .strength(1.4f,1000f)
+            .strength(1.8f,1000f)
             .randomTicks()
             .sound(SoundType.MUD_BRICKS)
             .requiresCorrectToolForDrops()
@@ -99,7 +108,7 @@ object ModBlocks {
     val GLITCH_SLAB: DeferredBlock<GlitchSlabBlock> = REGISTRY.registerBlock("glitch_slab") { properties ->
         GlitchSlabBlock(
             properties
-                .strength(1.3f,1000f)
+                .strength(1.7f,1000f)
                 .randomTicks()
                 .sound(SoundType.MUD_BRICKS)
                 .requiresCorrectToolForDrops()
@@ -109,7 +118,7 @@ object ModBlocks {
     val GLITCH_FENCE: DeferredBlock<GlitchFenceBlock> = REGISTRY.registerBlock("glitch_fence") { properties ->
         GlitchFenceBlock(
             properties
-                .strength(1.3f,1000f)
+                .strength(1.7f,1000f)
                 .randomTicks()
                 .sound(SoundType.MUD_BRICKS)
                 .requiresCorrectToolForDrops()
@@ -118,7 +127,7 @@ object ModBlocks {
 
     val GLITCH_LOG: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_log") { properties ->
         GlitchRotatedBlock(properties
-            .strength(1.5f,1000f)
+            .strength(1.9f,1000f)
             .randomTicks()
             .sound(SoundType.PACKED_MUD)
             .requiresCorrectToolForDrops()
@@ -126,8 +135,8 @@ object ModBlocks {
     }
 
     val GLITCH_PLANKS: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_planks") { properties ->
-        GlitchRotatedBlock(properties
-            .strength(1.4f,1000f)
+        GlitchBlock(properties
+            .strength(1.8f,1000f)
             .randomTicks()
             .sound(SoundType.PACKED_MUD)
             .requiresCorrectToolForDrops()
@@ -136,7 +145,7 @@ object ModBlocks {
 
     val GLITCH_LEAVES: DeferredBlock<GlitchTransparentBlock> = REGISTRY.registerBlock("glitch_leaves") { properties ->
         GlitchTransparentBlock(properties
-            .strength(0.3f,1000f)
+            .strength(0.7f,1000f)
             .randomTicks()
             .sound(SoundType.GRASS)
             .noOcclusion()
@@ -145,7 +154,7 @@ object ModBlocks {
 
     val GLITCH_GLASS: DeferredBlock<GlitchTransparentBlock> = REGISTRY.registerBlock("glitch_glass") { properties ->
         GlitchTransparentBlock(properties
-            .strength(0.6f,1000f)
+            .strength(1f,1000f)
             .randomTicks()
             .sound(SoundType.GLASS)
             .noOcclusion()
@@ -154,7 +163,7 @@ object ModBlocks {
 
     val GLITCH_GLASS_PANE: DeferredBlock<GlitchBarBlock> = REGISTRY.registerBlock("glitch_glass_pane") { properties ->
         GlitchBarBlock(properties
-            .strength(0.55f,1000f)
+            .strength(0.95f,1000f)
             .randomTicks()
             .sound(SoundType.GLASS)
             .noOcclusion()
@@ -200,6 +209,15 @@ object ModBlocks {
         )
     }
 
+    val CRACKED_HERMETIC_WALL: DeferredBlock<Block> = REGISTRY.registerBlock("cracked_hermetic_wall") { properties ->
+        Block(
+            properties
+                .strength(1.95f,7f)
+                .requiresCorrectToolForDrops()
+                .sound(SoundType.STONE)
+        )
+    }
+
     val HERMETIC_DOOR: DeferredBlock<Block> = REGISTRY.registerBlock("hermetic_door") { properties ->
         DoorBlock(
             BlockSetType.STONE,
@@ -214,7 +232,16 @@ object ModBlocks {
     val HERMETIC_GLASS: DeferredBlock<Block> = REGISTRY.registerBlock("hermetic_glass") { properties ->
         TransparentBlock(
             properties
-                .strength(0.4f,5.5f)
+                .strength(0.8f,5.5f)
+                .sound(SoundType.GLASS)
+                .noOcclusion()
+        )
+    }
+
+    val CRACKED_HERMETIC_GLASS: DeferredBlock<Block> = REGISTRY.registerBlock("cracked_hermetic_glass") { properties ->
+        TransparentBlock(
+            properties
+                .strength(0.75f,5.5f)
                 .sound(SoundType.GLASS)
                 .noOcclusion()
         )

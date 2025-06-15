@@ -72,6 +72,12 @@ object ModItems {
         Item.Properties()
     )
 
+    val GLITCH_LASER: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "glitch_laser",
+        ModBlocks.GLITCH_LASER,
+        Item.Properties()
+    )
+
     val GLITCH_FENCE: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
         "glitch_fence",
         ModBlocks.GLITCH_FENCE,
@@ -120,6 +126,12 @@ object ModItems {
         Item.Properties()
     )
 
+    val CRACKED_HERMETIC_WALL: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "cracked_hermetic_wall",
+        ModBlocks.CRACKED_HERMETIC_WALL,
+        Item.Properties()
+    )
+
     val HERMETIC_DOOR: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
         "hermetic_door",
         ModBlocks.HERMETIC_DOOR,
@@ -129,6 +141,12 @@ object ModItems {
     val HERMETIC_GLASS: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
         "hermetic_glass",
         ModBlocks.HERMETIC_GLASS,
+        Item.Properties()
+    )
+
+    val CRACKED_HERMETIC_GLASS: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "cracked_hermetic_glass",
+        ModBlocks.CRACKED_HERMETIC_GLASS,
         Item.Properties()
     )
 

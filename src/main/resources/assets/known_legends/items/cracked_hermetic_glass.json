@@ -1,0 +1,7 @@
+{
+  "model": {
+    "type": "minecraft:model",
+
+    "model": "known_legends:block/cracked_hermetic_glass"
+  }
+}

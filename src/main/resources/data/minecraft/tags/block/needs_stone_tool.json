@@ -12,7 +12,9 @@
     "known_legends:glitch_gravel",
     "known_legends:glitch_stairs",
     "known_legends:glitch_slab",
+    "known_legends:glitch_laser",
     "known_legends:hermetic_wall",
+    "known_legends:cracked_hermetic_wall",
     "known_legends:hermetic_door"
   ]
 }

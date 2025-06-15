@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "known_legends:block/cracked_hermetic_glass"
+  },
+  "render_type": "translucent"
+}

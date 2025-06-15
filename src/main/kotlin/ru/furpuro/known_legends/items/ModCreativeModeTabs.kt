@@ -32,6 +32,7 @@ object ModCreativeModeTabs {
                 output.accept(ModItems.GLITCH_GRAVEL)
                 output.accept(ModItems.GLITCH_GLASS)
                 output.accept(ModItems.GLITCH_GLASS_PANE)
+                output.accept(ModItems.GLITCH_LASER)
             }
             .build()
     }
@@ -45,8 +46,10 @@ object ModCreativeModeTabs {
                 output.accept(ModItems.FIX_GAS_SPRAYER)
 
                 output.accept(ModItems.HERMETIC_WALL)
+                output.accept(ModItems.CRACKED_HERMETIC_WALL)
                 output.accept(ModItems.HERMETIC_DOOR)
                 output.accept(ModItems.HERMETIC_GLASS)
+                output.accept(ModItems.CRACKED_HERMETIC_GLASS)
 
                 output.accept(ModItems.PROTECTIVE_BOOTS)
                 output.accept(ModItems.GAS_MASK)

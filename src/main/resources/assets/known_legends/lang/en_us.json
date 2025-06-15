@@ -39,6 +39,12 @@
   "block.known_legends.glitch_glass": "Glitch-Glass",
   "item.known_legends.glitch_glass_pane": "Glitch-Glass Pane",
   "block.known_legends.glitch_glass_pane": "Glitch-Glass Pane",
+  "item.known_legends.glitch_laser": "Glitch-Laser",
+  "block.known_legends.glitch_laser": "Glitch-Laser",
+  "item.known_legends.cracked_hermetic_wall": "Cracked Hermetic Wall",
+  "block.known_legends.cracked_hermetic_wall": "Cracked Hermetic Wall",
+  "item.known_legends.cracked_hermetic_glass": "Cracked Hermetic Glass",
+  "block.known_legends.cracked_hermetic_glass": "Cracked Hermetic Glass",
 
   "effect.known_legends.glitch": "Glitch",
   "effect.known_legends.glitch.description": "Slowly transforms you into glitch entity",
