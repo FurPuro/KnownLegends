@@ -46,6 +46,8 @@
   "item.known_legends.cracked_hermetic_glass": "Потрескавшийся Герметичное Стекло",
   "block.known_legends.cracked_hermetic_glass": "Потрескавшийся Герметичное Стекло",
 
+  "entity.known_legends.glitch_entity": "Сущность Глюка",
+
   "effect.known_legends.glitch": "Глюк",
   "effect.known_legends.glitch.description": "Медленно превращает тебя в сущность глюка",
 

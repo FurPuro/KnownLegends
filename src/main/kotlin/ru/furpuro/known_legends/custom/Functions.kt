@@ -12,6 +12,7 @@ import net.minecraft.util.RandomSource
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.effect.MobEffects
 import net.minecraft.world.entity.Entity
+import net.minecraft.world.entity.EntitySpawnReason
 import net.minecraft.world.entity.EquipmentSlot
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.level.Level
@@ -24,6 +25,7 @@ import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import ru.furpuro.known_legends.blocks.ModBlocks
 import ru.furpuro.known_legends.data.ModAttachments
+import ru.furpuro.known_legends.entities.ModEntityTypes
 import ru.furpuro.known_legends.items.ModItems
 
 object Functions {
@@ -95,6 +97,11 @@ object Functions {
                 if (2 >= random.nextIntBetweenInclusive(1,100)) {
                     if (level.getBlockState(pos.above()).isAir && level.getBlockState(pos).isSolidRender) {
                         level.setBlock(pos.above(),ModBlocks.GLITCH_GRASS.get().defaultBlockState(),2)
+                    }
+                }
+                if (1 >= random.nextIntBetweenInclusive(1,100)) {
+                    if (!level.getBlockState(pos).isAir && level.getBlockState(pos.above()).isAir && level.getBlockState(pos.above().above()).isAir) {
+                        ModEntityTypes.GLITCH_ENTITY.get().spawn(level,pos.above(),EntitySpawnReason.EVENT)
                     }
                 }
             }
@@ -226,7 +233,7 @@ object Functions {
         }
     }
     fun glitchBlockStep(entity:Entity,level:Level) {
-        if (entity is LivingEntity) {
+        if (entity is LivingEntity && !BuiltInRegistries.ENTITY_TYPE.getKey(entity.type).toString().contains("glitch")) {
             if (entity.getItemBySlot(EquipmentSlot.FEET).item != ModItems.PROTECTIVE_BOOTS.get()) {
                 val effect = MobEffectInstance(MobEffects.SLOWNESS, 10, 2, false, false, true)
                 entity.addEffect(effect)

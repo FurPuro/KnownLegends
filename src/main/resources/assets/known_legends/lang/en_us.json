@@ -46,6 +46,8 @@
   "item.known_legends.cracked_hermetic_glass": "Cracked Hermetic Glass",
   "block.known_legends.cracked_hermetic_glass": "Cracked Hermetic Glass",
 
+  "entity.known_legends.glitch_entity": "Glitch Entity",
+
   "effect.known_legends.glitch": "Glitch",
   "effect.known_legends.glitch.description": "Slowly transforms you into glitch entity",
 

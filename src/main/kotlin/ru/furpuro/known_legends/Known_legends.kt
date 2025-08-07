@@ -15,15 +15,18 @@ import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import ru.furpuro.known_legends.blocks.ModBlocks
 import ru.furpuro.known_legends.blocks.entity.ModBlockEntities
+import ru.furpuro.known_legends.custom.ClientEventHandler
 import ru.furpuro.known_legends.custom.EventHandler
 import ru.furpuro.known_legends.data.ModAttachments
 import ru.furpuro.known_legends.effects.ModMobEffects
+import ru.furpuro.known_legends.entities.GlitchEntityAttributes
 import ru.furpuro.known_legends.entities.ModEntityTypes
 import ru.furpuro.known_legends.fuids.ModFluids
 import ru.furpuro.known_legends.items.ModCreativeModeTabs
 import ru.furpuro.known_legends.items.ModItems
 import thedarkcolour.kotlinforforge.neoforge.forge.MOD_BUS
 import thedarkcolour.kotlinforforge.neoforge.forge.runForDist
+
 
 /**
  * Main mod class.
@@ -37,6 +40,7 @@ object Known_legends {
 
     // the logger for our mod
     val LOGGER: Logger = LogManager.getLogger(ID)
+
 
     init {
         LOGGER.log(Level.INFO, "Hello world!")
@@ -52,6 +56,8 @@ object Known_legends {
         ModCreativeModeTabs.CREATIVE_MODE_TAB.register(MOD_BUS)
         ModMobEffects.REGISTRY.register(MOD_BUS)
         ModEntityTypes.ENTITY_TYPES.register(MOD_BUS)
+        MOD_BUS.register(GlitchEntityAttributes())
+        MOD_BUS.register(ClientEventHandler())
 
         val obj = runForDist(
             clientTarget = {

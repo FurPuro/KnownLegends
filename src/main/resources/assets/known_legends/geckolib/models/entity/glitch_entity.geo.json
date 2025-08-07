@@ -1,0 +1,59 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.glitch_entity",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-5, 0, -6], "size": [10, 6, 12], "pivot": [0, 0, 0], "rotation": [0, -45, 0], "uv": [0, 40]},
+						{"origin": [-5, 0, -6], "size": [10, 9, 12], "pivot": [0, 0, 0], "rotation": [0, -22.5, 0], "uv": [0, 0]},
+						{"origin": [-5, 0, -6], "size": [10, 7, 12], "uv": [0, 21]},
+						{"origin": [-4, 0, -2.25], "size": [8, 10, 5], "uv": [44, 16]}
+					]
+				},
+				{
+					"name": "torso",
+					"parent": "root",
+					"pivot": [0, 10, 0.25],
+					"cubes": [
+						{"origin": [-4, 10, -2.25], "size": [8, 10, 5], "uv": [44, 31]}
+					]
+				},
+				{
+					"name": "left_arm",
+					"parent": "torso",
+					"pivot": [4, 18, 0.25],
+					"cubes": [
+						{"origin": [4, 9, -2.25], "size": [5, 11, 5], "uv": [0, 58]}
+					]
+				},
+				{
+					"name": "right_arm",
+					"parent": "torso",
+					"pivot": [-4, 18, 0.25],
+					"cubes": [
+						{"origin": [-9, 9, -2.25], "size": [5, 11, 5], "uv": [44, 46]}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "torso",
+					"pivot": [0, 20, 0.25],
+					"cubes": [
+						{"origin": [-4, 20, -3.75], "size": [8, 8, 8], "uv": [44, 0]}
+					]
+				}
+			]
+		}
+	]
+}

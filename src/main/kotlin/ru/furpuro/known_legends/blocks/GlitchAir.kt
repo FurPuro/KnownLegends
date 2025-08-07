@@ -3,6 +3,7 @@ package ru.furpuro.known_legends.blocks
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.core.particles.ParticleTypes
+import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.util.RandomSource
 import net.minecraft.world.effect.MobEffectInstance
@@ -74,17 +75,19 @@ class GlitchAir(props: Properties) : Block(props.randomTicks().air().noOcclusion
 
             val entities = level.getEntitiesOfClass(LivingEntity::class.java, AABB(pos))
             for (entity in entities) {
-                if (entity.getItemBySlot(EquipmentSlot.HEAD).item != ModItems.GAS_MASK.get()) {
-                    val effect = MobEffectInstance(MobEffects.HUNGER, 60, 2, false, false, true)
-                    entity.addEffect(effect)
-                    val effect2 = MobEffectInstance(MobEffects.WITHER, 60, 2, false, false,true)
-                    entity.addEffect(effect2)
-                } else if (25 >= random.nextIntBetweenInclusive(1,100)) {
-                    entity.getItemBySlot(EquipmentSlot.HEAD).hurtAndBreak(
-                        1,
-                        entity,
-                        EquipmentSlot.HEAD
-                    )
+                if (!BuiltInRegistries.ENTITY_TYPE.getKey(entity.type).toString().contains("glitch")) {
+                    if (entity.getItemBySlot(EquipmentSlot.HEAD).item != ModItems.GAS_MASK.get()) {
+                        val effect = MobEffectInstance(MobEffects.HUNGER, 60, 2, false, false, true)
+                        entity.addEffect(effect)
+                        val effect2 = MobEffectInstance(MobEffects.WITHER, 60, 2, false, false,true)
+                        entity.addEffect(effect2)
+                    } else if (25 >= random.nextIntBetweenInclusive(1,100)) {
+                        entity.getItemBySlot(EquipmentSlot.HEAD).hurtAndBreak(
+                            1,
+                            entity,
+                            EquipmentSlot.HEAD
+                        )
+                    }
                 }
             }
             level.scheduleTick(pos, this, 10, TickPriority.NORMAL)
