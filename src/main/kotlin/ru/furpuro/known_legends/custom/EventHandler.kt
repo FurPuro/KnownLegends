@@ -3,30 +3,18 @@ package ru.furpuro.known_legends.custom
 import com.mojang.blaze3d.shaders.FogShape
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.FogRenderer
-import net.minecraft.client.renderer.entity.LivingEntityRenderer
-import net.minecraft.client.renderer.entity.state.LivingEntityRenderState
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.server.level.ServerLevel
-import net.minecraft.world.entity.Entity
-import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.level.Level
 import net.neoforged.bus.api.SubscribeEvent
-import net.neoforged.neoforge.client.event.EntityRenderersEvent
 import net.neoforged.neoforge.client.event.ViewportEvent
 import net.neoforged.neoforge.client.event.ViewportEvent.ComputeFogColor
 import net.neoforged.neoforge.event.RegisterCommandsEvent
 import net.neoforged.neoforge.event.level.BlockEvent.BreakEvent
 import net.neoforged.neoforge.event.tick.LevelTickEvent
-import ru.furpuro.known_legends.Known_legends
 import ru.furpuro.known_legends.blocks.ModBlocks
 import ru.furpuro.known_legends.custom.Functions.glitchRemoveFunction
 import ru.furpuro.known_legends.custom.Functions.spawnGlitchAir
-import ru.furpuro.known_legends.entities.GlitchEntity
-import ru.furpuro.known_legends.entities.GlitchEntityRenderer
-import ru.furpuro.known_legends.entities.ModEntityTypes
-import ru.furpuro.known_legends.entities.RenderState
-import software.bernie.geckolib.renderer.base.GeoRenderState
-import software.bernie.geckolib.renderer.base.GeoRenderer
 
 
 class EventHandler {
@@ -86,7 +74,7 @@ class EventHandler {
         val blockId = BuiltInRegistries.BLOCK.getKey(state.block).toString()
         if (level is Level) {
             if (blockId.contains("glitch") && !blockId.contains("decor")) {
-                glitchRemoveFunction(level, pos)
+                glitchRemoveFunction(level)
             } /*else {
                 println(blockId)
             }*/

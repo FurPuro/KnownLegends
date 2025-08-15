@@ -19,7 +19,7 @@ import ru.furpuro.known_legends.custom.ClientEventHandler
 import ru.furpuro.known_legends.custom.EventHandler
 import ru.furpuro.known_legends.data.ModAttachments
 import ru.furpuro.known_legends.effects.ModMobEffects
-import ru.furpuro.known_legends.entities.GlitchEntityAttributes
+import ru.furpuro.known_legends.entities.ModEntityAttributes
 import ru.furpuro.known_legends.entities.ModEntityTypes
 import ru.furpuro.known_legends.fuids.ModFluids
 import ru.furpuro.known_legends.items.ModCreativeModeTabs
@@ -56,7 +56,7 @@ object Known_legends {
         ModCreativeModeTabs.CREATIVE_MODE_TAB.register(MOD_BUS)
         ModMobEffects.REGISTRY.register(MOD_BUS)
         ModEntityTypes.ENTITY_TYPES.register(MOD_BUS)
-        MOD_BUS.register(GlitchEntityAttributes())
+        MOD_BUS.register(ModEntityAttributes())
         MOD_BUS.register(ClientEventHandler())
 
         val obj = runForDist(
@@ -79,38 +79,7 @@ object Known_legends {
      */
     private fun onClientSetup(event: FMLClientSetupEvent) {
         LOGGER.log(Level.INFO, "Initializing client...")
-
-        //ItemBlockRenderTypes.setRenderLayer(ModFluids.GLITCH_FLUID.get(), RenderType.translucent())
-        //ItemBlockRenderTypes.setRenderLayer(ModFluids.GLITCH_FLUID_FLOW.get(), RenderType.translucent())
     }
-
-    //@SubscribeEvent
-    //private fun onRegisterClientExtensions(event: RegisterClientExtensionsEvent) {
-//        LOGGER.log(Level.INFO,"Initializing client extensions")
-//
-//        event.registerFluidType(object : IClientFluidTypeExtensions {
-//            private val GLITCH_FLUID_STILL: ResourceLocation =
-//                ResourceLocation.withDefaultNamespace("block/glitch_fluid_still")
-//            private val GLITCH_FLUID_FLOW: ResourceLocation =
-//                ResourceLocation.withDefaultNamespace("block/glitch_fluid_flow")
-//
-//            @Override
-//            override fun getStillTexture(): ResourceLocation {
-//                return GLITCH_FLUID_STILL
-//            }
-//
-//            @Override
-//            override fun getFlowingTexture(): ResourceLocation {
-//                return GLITCH_FLUID_FLOW
-//            }
-//
-//            @Override
-//            override fun getTintColor(): Int {
-//                return 0x8354b3
-//            }
-//
-//        }, ModFluids.GLITCH_FLUID_TYPE.get())
-//    }
 
     /**
      * Fired on the global Forge bus.

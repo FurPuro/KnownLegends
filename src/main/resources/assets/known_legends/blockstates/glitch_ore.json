@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "": [
+      { "model": "known_legends:block/glitch_ore", "x": 0 },
+      { "model": "known_legends:block/glitch_ore", "x": 90 },
+      { "model": "known_legends:block/glitch_ore", "x": 180 },
+      { "model": "known_legends:block/glitch_ore", "x": 270 },
+      { "model": "known_legends:block/glitch_ore", "y": 0 },
+      { "model": "known_legends:block/glitch_ore", "y": 90 },
+      { "model": "known_legends:block/glitch_ore", "y": 180 },
+      { "model": "known_legends:block/glitch_ore", "y": 270 },
+      { "model": "known_legends:block/glitch_ore", "z": 0 },
+      { "model": "known_legends:block/glitch_ore", "z": 90 },
+      { "model": "known_legends:block/glitch_ore", "z": 180 },
+      { "model": "known_legends:block/glitch_ore", "z": 270 }
+    ]
+  }
+}

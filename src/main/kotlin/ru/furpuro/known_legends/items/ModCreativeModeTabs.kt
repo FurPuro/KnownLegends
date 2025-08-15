@@ -17,6 +17,8 @@ object ModCreativeModeTabs {
             .title(Component.translatable("creativetab.known_legends.glitch"))
             .displayItems {itemDisplayParameters,output ->
                 output.accept(ModItems.GLITCH_BLOCK)
+                output.accept(ModItems.GLITCH_ORE)
+                output.accept(ModItems.GLITCH_SHARD)
                 output.accept(ModItems.GLITCH_BLOCK_DECOR)
                 output.accept(ModItems.GLITCH_STAIRS)
                 output.accept(ModItems.GLITCH_SLAB)

@@ -5,8 +5,6 @@ import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.network.chat.Component
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.server.level.ServerPlayer
-import net.minecraft.sounds.SoundEvents
-import net.minecraft.sounds.SoundSource
 import net.minecraft.tags.BlockTags
 import net.minecraft.util.RandomSource
 import net.minecraft.world.effect.MobEffectInstance
@@ -85,7 +83,7 @@ object Functions {
         placeGlitch(blockId,phase, random, targetState, level, pos, targetPos)
     }
     fun placeGlitch(blockId: String,phase: Int,random: RandomSource,targetState: BlockState,level: ServerLevel,pos: BlockPos,targetPos: BlockPos) {
-        if ( ( (blockId.contains("glitch") && blockId.contains("decor")) || !blockId.contains("glitch") ) && !blockId.contains("hermetic")) {
+        if ( ( (blockId.contains("glitch") && blockId.contains("decor")) || !blockId.contains("glitch") ) && !blockId.contains("hermetic") && !blockId.contains("chest") && !blockId.contains("barrel")) {
             if (phase >= 3) {
                 if (3 >= random.nextIntBetweenInclusive(1,100)) {
                     if (level.getBlockState(pos.above()).isAir && level.getBlockState(pos).isSolidRender) {
@@ -124,6 +122,8 @@ object Functions {
                             level.setBlock(targetPos, ModBlocks.GLITCH_GLASS.get().defaultBlockState(), 2)
                         } else if (blockId.contains("cobble")) {
                             level.setBlock(targetPos, ModBlocks.GLITCH_COBBLESTONE.get().defaultBlockState(), 2)
+                        } else if (targetState.`is`(BlockTags.DIAMOND_ORES)) {
+                            level.setBlock(targetPos,ModBlocks.GLITCH_ORE.get().defaultBlockState(),2)
                         } else {
                             level.setBlock(targetPos, ModBlocks.GLITCH_BLOCK.get().defaultBlockState(), 2)
                         }
@@ -158,26 +158,16 @@ object Functions {
 
                         level.setBlock(targetPos, ModBlocks.GLITCH_SLAB.get().defaultBlockState().setValue(SlabBlock.TYPE,slabType).setValue(SlabBlock.WATERLOGGED,waterlogged), 2)
                     }
-                } else if (!targetState.`is`(Blocks.FIRE)) {
-//                    if (90 >= random.nextIntBetweenInclusive(1,100)) {
-//                        if (hasAirNeighbor(level, pos) && !targetState.isAir) {
-//                            val targetPos2 = getRandomNeighbor(pos)
-//                            val targetState2 = level.getBlockState(targetPos2)
-//
-//                            if (targetState2.isAir) {
-//                                level.setBlock(targetPos2,targetState,2)
-//                                level.setBlock(targetPos,Blocks.AIR.defaultBlockState(),2)
-//                            }
-//                        }
-//                    } else {
-                        level.destroyBlock(targetPos,false)
-                        level.setBlock(targetPos, ModBlocks.GLITCH_AIR.get().defaultBlockState(), 2)
-//                    }
+                } else if (!targetState.`is`(Blocks.FIRE) && !targetState.isAir && hasAirNeighbor(level,targetPos) && hasGlitchNeighbor(level,targetPos,1)) {
+                    level.destroyBlock(targetPos,false)
+                    level.setBlock(targetPos, ModBlocks.GLITCH_AIR.get().defaultBlockState(), 2)
                 }
             }
             if (phase >= 0) {
                 if (targetState.isAir || blockId.contains("door")) {
-                    level.setBlock(targetPos, ModBlocks.GLITCH_AIR.get().defaultBlockState(), 2)
+                    if (phase == 0 || hasGlitchNeighbor(level,targetPos,1)) {
+                        level.setBlock(targetPos, ModBlocks.GLITCH_AIR.get().defaultBlockState(), 2)
+                    }
                 }
             }
 
@@ -232,6 +222,27 @@ object Functions {
             level.getBlockState(pos.offset(offset)).isAir
         }
     }
+    private fun hasGlitchNeighbor(level: Level, pos: BlockPos,rad: Int): Boolean {
+        val directions = listOf(
+            BlockPos(rad, 0, 0),
+            BlockPos(-rad, 0, 0),
+            BlockPos(0, rad, 0),
+            BlockPos(0, -rad, 0),
+            BlockPos(0, 0, rad),
+            BlockPos(0, 0, -rad)
+        )
+
+        return directions.any { offset ->
+            val posOffset = pos.offset(offset)
+            val state = level.getBlockState(posOffset)
+            val block = state.block
+            val blockId = BuiltInRegistries.BLOCK.getKey(block).toString()
+            if (blockId.contains("glitch") && !blockId.contains("decor") && !state.isAir) {
+                return true
+            }
+            return false
+        }
+    }
     fun glitchBlockStep(entity:Entity,level:Level) {
         if (entity is LivingEntity && !BuiltInRegistries.ENTITY_TYPE.getKey(entity.type).toString().contains("glitch")) {
             if (entity.getItemBySlot(EquipmentSlot.FEET).item != ModItems.PROTECTIVE_BOOTS.get()) {
@@ -249,22 +260,20 @@ object Functions {
         }
     }
     fun getPhase(points : Int): Int {
-        return if (points < 800) {
+        return if (points < 400) {
             0
-        } else if (points < 75000) {
+        } else if (points < 35000) {
             1
-        } else if (points < 450000) {
+        } else if (points < 100000) {
             2
         } else {
             3
         }
     }
-    fun glitchRemoveFunction(level: Level, pos: BlockPos) {
+    fun glitchRemoveFunction(level: Level) {
         if (!level.isClientSide) {
             val data = level.getData(ModAttachments.POINTS_DATA)
             data.points -= 2
-
-            level.setBlock(pos, ModBlocks.GLITCH_AIR.get().defaultBlockState(), 2)
         }
     }
 }

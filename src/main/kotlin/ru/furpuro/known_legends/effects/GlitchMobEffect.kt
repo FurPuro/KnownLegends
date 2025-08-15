@@ -19,7 +19,9 @@ class GlitchMobEffect : MobEffect(
 ) {
     override fun applyEffectTick(level: ServerLevel, entity: LivingEntity, amplifier: Int): Boolean {
         if (!entity.level().isClientSide) {
-            entity.hurtServer(level, entity.damageSources().inWall(),1f*(amplifier+1))
+            if (!BuiltInRegistries.ENTITY_TYPE.getKey(entity.type).toString().contains("glitch")) {
+                entity.hurtServer(level, entity.damageSources().inWall(),1f*(amplifier+1))
+            }
 
             val pos = entity.blockPosition().below()
 

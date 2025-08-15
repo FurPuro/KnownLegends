@@ -5,7 +5,7 @@ import net.minecraft.world.entity.monster.Monster
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent
 
-class GlitchEntityAttributes {
+class ModEntityAttributes {
     @SubscribeEvent
     fun createDefaultAttributes(event: EntityAttributeCreationEvent) {
         event.put(

@@ -24,6 +24,12 @@ object ModItems {
         Item.Properties()
     )
 
+    val GLITCH_ORE: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
+        "glitch_ore",
+        ModBlocks.GLITCH_ORE,
+        Item.Properties()
+    )
+
     val GLITCH_LEAVES: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
         "glitch_leaves",
         ModBlocks.GLITCH_LEAVES,
@@ -113,6 +119,13 @@ object ModItems {
         ModBlocks.GLITCH_COBBLESTONE,
         Item.Properties()
     )
+
+    val GLITCH_SHARD: DeferredItem<Item> = REGISTRY.registerItem("glitch_shard") { properties ->
+        Item(
+            properties
+                .rarity(Rarity.UNCOMMON)
+        )
+    }
 
     val FIX_GAS_SPRAYER: DeferredItem<BlockItem> = REGISTRY.registerSimpleBlockItem(
         "fix_gas_sprayer",

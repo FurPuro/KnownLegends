@@ -29,6 +29,15 @@ object ModBlocks {
         )
     }
 
+    val GLITCH_ORE: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_ore") { properties ->
+        GlitchBlock(properties
+            .strength(2.4f,1000f)
+            .requiresCorrectToolForDrops()
+            .randomTicks()
+            .sound(SoundType.MUD_BRICKS)
+        )
+    }
+
     val GLITCH_LASER: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_laser") { properties ->
         GlitchLaser(properties
             .strength(2.6f,1000f)

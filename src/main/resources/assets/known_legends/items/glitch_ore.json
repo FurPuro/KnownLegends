@@ -1,0 +1,7 @@
+{
+  "model": {
+    "type": "minecraft:model",
+
+    "model": "known_legends:block/glitch_ore"
+  }
+}
