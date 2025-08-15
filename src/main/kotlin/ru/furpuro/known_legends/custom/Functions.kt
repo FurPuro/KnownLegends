@@ -1,5 +1,6 @@
 package ru.furpuro.known_legends.custom
 
+import io.netty.handler.logging.LogLevel
 import net.minecraft.core.BlockPos
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.network.chat.Component
@@ -21,6 +22,7 @@ import net.minecraft.world.level.block.SlabBlock
 import net.minecraft.world.level.block.StairBlock
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
+import ru.furpuro.known_legends.Known_legends
 import ru.furpuro.known_legends.blocks.ModBlocks
 import ru.furpuro.known_legends.data.ModAttachments
 import ru.furpuro.known_legends.entities.ModEntityTypes
@@ -158,14 +160,14 @@ object Functions {
 
                         level.setBlock(targetPos, ModBlocks.GLITCH_SLAB.get().defaultBlockState().setValue(SlabBlock.TYPE,slabType).setValue(SlabBlock.WATERLOGGED,waterlogged), 2)
                     }
-                } else if (!targetState.`is`(Blocks.FIRE) && !targetState.isAir && hasAirNeighbor(level,targetPos) && hasGlitchNeighbor(level,targetPos,1)) {
+                } else if (!targetState.`is`(Blocks.FIRE) && !targetState.isAir && hasAirNeighbor(level,targetPos) && (hasNonAirNeighbor(level,targetPos,3) || hasNonAirNeighbor(level,targetPos,2) || hasNonAirNeighbor(level,targetPos,1))) {
                     level.destroyBlock(targetPos,false)
                     level.setBlock(targetPos, ModBlocks.GLITCH_AIR.get().defaultBlockState(), 2)
                 }
             }
             if (phase >= 0) {
                 if (targetState.isAir || blockId.contains("door")) {
-                    if (phase == 0 || hasGlitchNeighbor(level,targetPos,1)) {
+                    if (phase == 0 && (hasNonAirNeighbor(level,targetPos,3) || hasNonAirNeighbor(level,targetPos,2) || hasNonAirNeighbor(level,targetPos,1))) {
                         level.setBlock(targetPos, ModBlocks.GLITCH_AIR.get().defaultBlockState(), 2)
                     }
                 }
@@ -222,7 +224,7 @@ object Functions {
             level.getBlockState(pos.offset(offset)).isAir
         }
     }
-    private fun hasGlitchNeighbor(level: Level, pos: BlockPos,rad: Int): Boolean {
+    private fun hasNonAirNeighbor(level: Level, pos: BlockPos,rad: Int): Boolean {
         val directions = listOf(
             BlockPos(rad, 0, 0),
             BlockPos(-rad, 0, 0),
@@ -233,22 +235,15 @@ object Functions {
         )
 
         return directions.any { offset ->
-            val posOffset = pos.offset(offset)
-            val state = level.getBlockState(posOffset)
-            val block = state.block
-            val blockId = BuiltInRegistries.BLOCK.getKey(block).toString()
-            if (blockId.contains("glitch") && !blockId.contains("decor") && !state.isAir) {
-                return true
-            }
-            return false
+            !level.getBlockState(pos.offset(offset)).isAir
         }
     }
     fun glitchBlockStep(entity:Entity,level:Level) {
         if (entity is LivingEntity && !BuiltInRegistries.ENTITY_TYPE.getKey(entity.type).toString().contains("glitch")) {
             if (entity.getItemBySlot(EquipmentSlot.FEET).item != ModItems.PROTECTIVE_BOOTS.get()) {
-                val effect = MobEffectInstance(MobEffects.SLOWNESS, 10, 2, false, false, true)
+                val effect = MobEffectInstance(MobEffects.SLOWNESS, 10, 1, false, false, true)
                 entity.addEffect(effect)
-                val effect2 = MobEffectInstance(MobEffects.MINING_FATIGUE, 10, 2, false, false, true)
+                val effect2 = MobEffectInstance(MobEffects.MINING_FATIGUE, 10, 1, false, false, true)
                 entity.addEffect(effect2)
             } else if (10 >= level.random.nextIntBetweenInclusive(1,100)) {
                 entity.getItemBySlot(EquipmentSlot.FEET).hurtAndBreak(
@@ -262,9 +257,9 @@ object Functions {
     fun getPhase(points : Int): Int {
         return if (points < 400) {
             0
-        } else if (points < 35000) {
+        } else if (points < 20000) {
             1
-        } else if (points < 100000) {
+        } else if (points < 85000) {
             2
         } else {
             3
@@ -273,7 +268,7 @@ object Functions {
     fun glitchRemoveFunction(level: Level) {
         if (!level.isClientSide) {
             val data = level.getData(ModAttachments.POINTS_DATA)
-            data.points -= 2
+            data.points -= 1
         }
     }
 }

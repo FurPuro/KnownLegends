@@ -34,7 +34,6 @@ import thedarkcolour.kotlinforforge.neoforge.forge.runForDist
  * An example for blocks is in the `blocks` package of this mod.
  */
 @Mod(Known_legends.ID)
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 object Known_legends {
     const val ID = "known_legends"
 

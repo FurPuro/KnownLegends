@@ -3,6 +3,8 @@
   "block.known_legends.glitch_block_decor": "Decorative Glitch-Block",
   "item.known_legends.glitch_block": "Glitch-Block",
   "block.known_legends.glitch_block": "Glitch-Block",
+  "item.known_legends.glitch_ore": "Glitch-Ore",
+  "block.known_legends.glitch_ore": "Glitch-Ore",
   "item.known_legends.fix_gas_sprayer": "Fix Gas Sprayer",
   "block.known_legends.fix_gas_sprayer": "Fix Gas Sprayer",
   "item.known_legends.glitch_leaves": "Glitch-Leaves",
@@ -54,6 +56,8 @@
   "item.known_legends.protective_boots": "Protective Boots",
   "item.known_legends.gas_mask": "Gas Mask",
   "item.known_legends.fix_powder": "Fix Powder",
+
+  "item.known_legends.glitch_shard": "Glitch Shard",
 
   "creativetab.known_legends.glitch": "Glitches",
   "creativetab.known_legends.defense": "Defense",

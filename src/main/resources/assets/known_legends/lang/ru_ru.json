@@ -3,6 +3,8 @@
   "block.known_legends.glitch_block_decor": "Декоративный Глюк-Блок",
   "item.known_legends.glitch_block": "Глюк-Блок",
   "block.known_legends.glitch_block": "Глюк-Блок",
+  "item.known_legends.glitch_ore": "Глюк-Руда",
+  "block.known_legends.glitch_ore": "Глюк-Руда",
   "item.known_legends.fix_gas_sprayer": "Распылитель Ремонтирующего газа",
   "block.known_legends.fix_gas_sprayer": "Распылитель Ремонтирующего газа",
   "item.known_legends.glitch_leaves": "Глюк-Листва",
@@ -54,6 +56,8 @@
   "item.known_legends.protective_boots": "Защитные Ботинки",
   "item.known_legends.gas_mask": "Противогаз",
   "item.known_legends.fix_powder": "Ремонтирующая Пыль",
+
+  "item.known_legends.glitch_shard": "Осколок Глюка",
 
   "creativetab.known_legends.glitch": "Глюки",
   "creativetab.known_legends.defense": "Защита",

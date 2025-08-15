@@ -77,9 +77,9 @@ class GlitchAir(props: Properties) : Block(props.randomTicks().air().noOcclusion
             for (entity in entities) {
                 if (!BuiltInRegistries.ENTITY_TYPE.getKey(entity.type).toString().contains("glitch")) {
                     if (entity.getItemBySlot(EquipmentSlot.HEAD).item != ModItems.GAS_MASK.get()) {
-                        val effect = MobEffectInstance(MobEffects.HUNGER, 60, 2, false, false, true)
+                        val effect = MobEffectInstance(MobEffects.HUNGER, 40, 1, false, false, true)
                         entity.addEffect(effect)
-                        val effect2 = MobEffectInstance(MobEffects.WITHER, 60, 2, false, false,true)
+                        val effect2 = MobEffectInstance(MobEffects.WITHER, 40, 1, false, false,true)
                         entity.addEffect(effect2)
                     } else if (25 >= random.nextIntBetweenInclusive(1,100)) {
                         entity.getItemBySlot(EquipmentSlot.HEAD).hurtAndBreak(
