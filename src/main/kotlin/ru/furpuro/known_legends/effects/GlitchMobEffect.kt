@@ -19,10 +19,6 @@ class GlitchMobEffect : MobEffect(
 ) {
     override fun applyEffectTick(level: ServerLevel, entity: LivingEntity, amplifier: Int): Boolean {
         if (!entity.level().isClientSide) {
-            if (!BuiltInRegistries.ENTITY_TYPE.getKey(entity.type).toString().contains("glitch")) {
-                entity.hurtServer(level, entity.damageSources().inWall(),1f*(amplifier+1))
-            }
-
             val pos = entity.blockPosition().below()
 
             val targetState = level.getBlockState(pos)
@@ -32,16 +28,21 @@ class GlitchMobEffect : MobEffect(
             val data = level.getData(ModAttachments.POINTS_DATA)
             val phase = getPhase(data.points)
 
-            if (!targetState.isAir && 4 >= level.random.nextIntBetweenInclusive(1,100)) {
+            if (!BuiltInRegistries.ENTITY_TYPE.getKey(entity.type).toString().contains("glitch")) {
+                entity.hurtServer(level, entity.damageSources().inWall(),1f*(amplifier+1))
+
+                spawnDamageParticles(entity)
+
+                if (entity.health <= 0f) {
+                    ModEntityTypes.GLITCH_ENTITY.get().spawn(level,pos.above(),EntitySpawnReason.EVENT)
+                    entity.removeEffect(ModMobEffects.GLITCH)
+                }
+            }
+
+            if (!targetState.isAir && 25 >= level.random.nextIntBetweenInclusive(1,100)) { // 25%
                 placeGlitch(blockId,phase,level.random,targetState,level,pos,pos)
             }
 
-            spawnDamageParticles(entity)
-
-            if (entity.health <= 0f) {
-                ModEntityTypes.GLITCH_ENTITY.get().spawn(level,pos.above(),EntitySpawnReason.EVENT)
-                entity.removeEffect(ModMobEffects.GLITCH)
-            }
         }
 
         return true
@@ -59,6 +60,6 @@ class GlitchMobEffect : MobEffect(
     }
 
     override fun shouldApplyEffectTickThisTick(duration: Int, amplifier: Int): Boolean {
-        return (duration%round((10/(amplifier+1)).toDouble())).toInt()==0
+        return (duration%round((15/(amplifier+1)).toDouble())).toInt()==0
     }
 }

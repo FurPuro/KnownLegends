@@ -35,6 +35,7 @@ object ModBlocks {
             .requiresCorrectToolForDrops()
             .randomTicks()
             .sound(SoundType.MUD_BRICKS)
+            .lightLevel { 4 }
         )
     }
 
@@ -100,6 +101,7 @@ object ModBlocks {
             .noCollission()
             .noLootTable()
             .replaceable()
+            .lightLevel { 6 }
         )
     }
 

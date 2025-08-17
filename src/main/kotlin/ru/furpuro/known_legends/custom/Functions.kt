@@ -87,19 +87,19 @@ object Functions {
     fun placeGlitch(blockId: String,phase: Int,random: RandomSource,targetState: BlockState,level: ServerLevel,pos: BlockPos,targetPos: BlockPos) {
         if ( ( (blockId.contains("glitch") && blockId.contains("decor")) || !blockId.contains("glitch") ) && !blockId.contains("hermetic") && !blockId.contains("chest") && !blockId.contains("barrel")) {
             if (phase >= 3) {
-                if (3 >= random.nextIntBetweenInclusive(1,100)) {
+                if (1 >= random.nextIntBetweenInclusive(1,200)) {
                     if (level.getBlockState(pos.above()).isAir && level.getBlockState(pos).isSolidRender) {
                         level.setBlock(pos.above(),ModBlocks.GLITCH_LASER.get().defaultBlockState(),2)
                     }
                 }
             }
             if (phase >= 2) {
-                if (2 >= random.nextIntBetweenInclusive(1,100)) {
+                if (1 >= random.nextIntBetweenInclusive(1,100)) {
                     if (level.getBlockState(pos.above()).isAir && level.getBlockState(pos).isSolidRender) {
                         level.setBlock(pos.above(),ModBlocks.GLITCH_GRASS.get().defaultBlockState(),2)
                     }
                 }
-                if (1 >= random.nextIntBetweenInclusive(1,100)) {
+                if (1 >= random.nextIntBetweenInclusive(1,1000)) {
                     if (!level.getBlockState(pos).isAir && level.getBlockState(pos.above()).isAir && level.getBlockState(pos.above().above()).isAir) {
                         ModEntityTypes.GLITCH_ENTITY.get().spawn(level,pos.above(),EntitySpawnReason.EVENT)
                     }
@@ -160,9 +160,14 @@ object Functions {
 
                         level.setBlock(targetPos, ModBlocks.GLITCH_SLAB.get().defaultBlockState().setValue(SlabBlock.TYPE,slabType).setValue(SlabBlock.WATERLOGGED,waterlogged), 2)
                     }
-                } else if (!targetState.`is`(Blocks.FIRE) && !targetState.isAir && hasAirNeighbor(level,targetPos) && (hasNonAirNeighbor(level,targetPos,3) || hasNonAirNeighbor(level,targetPos,2) || hasNonAirNeighbor(level,targetPos,1))) {
+                } else if (!targetState.`is`(Blocks.FIRE) && hasAirNeighbor(level,targetPos) && (hasNonAirNeighbor(level,targetPos,3) || hasNonAirNeighbor(level,targetPos,2) || hasNonAirNeighbor(level,targetPos,1))) {
                     level.destroyBlock(targetPos,false)
                     level.setBlock(targetPos, ModBlocks.GLITCH_AIR.get().defaultBlockState(), 2)
+                }
+                if (1 >= random.nextIntBetweenInclusive(1,800)) {
+                    if (!level.getBlockState(pos).isAir && level.getBlockState(pos.above()).isAir && level.getBlockState(pos.above()).isAir) {
+                        ModEntityTypes.GLITCH_PARASITE.get().spawn(level,pos.above(),EntitySpawnReason.EVENT)
+                    }
                 }
             }
             if (phase >= 0) {
@@ -257,9 +262,9 @@ object Functions {
     fun getPhase(points : Int): Int {
         return if (points < 400) {
             0
-        } else if (points < 20000) {
+        } else if (points < 10000) {
             1
-        } else if (points < 85000) {
+        } else if (points < 40000) {
             2
         } else {
             3

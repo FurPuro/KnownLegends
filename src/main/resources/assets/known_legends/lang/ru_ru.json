@@ -43,12 +43,14 @@
   "block.known_legends.glitch_glass_pane": "Глюк-Стеклянная Панель",
   "item.known_legends.glitch_laser": "Глюк-Лазер",
   "block.known_legends.glitch_laser": "Глюк-Лазер",
-  "item.known_legends.cracked_hermetic_wall": "Потрескавшийся Герметичная Стена",
-  "block.known_legends.cracked_hermetic_wall": "Потрескавшийся Герметичная Стена",
-  "item.known_legends.cracked_hermetic_glass": "Потрескавшийся Герметичное Стекло",
-  "block.known_legends.cracked_hermetic_glass": "Потрескавшийся Герметичное Стекло",
+  "item.known_legends.cracked_hermetic_wall": "Потрескавшиеся Герметичная Стена",
+  "block.known_legends.cracked_hermetic_wall": "Потрескавшиеся Герметичная Стена",
+  "item.known_legends.cracked_hermetic_glass": "Потрескавшиеся Герметичное Стекло",
+  "block.known_legends.cracked_hermetic_glass": "Потрескавшиеся Герметичное Стекло",
 
   "entity.known_legends.glitch_entity": "Сущность Глюка",
+  "entity.known_legends.glitch_parasite": "Паразит Глюка",
+  "entity.known_legends.glitch_crawler": "Ползун Глюка",
 
   "effect.known_legends.glitch": "Глюк",
   "effect.known_legends.glitch.description": "Медленно превращает тебя в сущность глюка",
