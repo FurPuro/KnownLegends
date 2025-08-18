@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.state.BlockState
 
 class FixGasSprayerEntity(pos:BlockPos,state:BlockState) : BlockEntity(ModBlockEntities.FIX_GAS_SPRAYER_BE.get(),pos,state) {
     var gas: Int = 0
-    val maxGas: Int = 48000
+    val maxGas: Int = 128000
     val gasConsume: Int = 10
 
     override fun saveAdditional(tag: CompoundTag, registries: HolderLookup.Provider) {

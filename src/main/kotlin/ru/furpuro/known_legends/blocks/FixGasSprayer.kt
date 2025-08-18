@@ -135,7 +135,7 @@ class FixGasSprayer(properties:Properties) : BaseEntityBlock(properties) {
 
     override fun onPlace(state: BlockState, level: Level, pos: BlockPos, oldState: BlockState, movedByPiston: Boolean) {
         if (!level.isClientSide()) {
-            level.scheduleTick(pos, this, 15, TickPriority.NORMAL)
+            level.scheduleTick(pos, this, 20, TickPriority.NORMAL)
         }
         super.onPlace(state, level, pos, oldState, movedByPiston)
     }
@@ -143,7 +143,7 @@ class FixGasSprayer(properties:Properties) : BaseEntityBlock(properties) {
     override fun tick(state: BlockState, level: ServerLevel, pos: BlockPos, random: RandomSource) {
         if (!level.isClientSide && state.getValue(POWERED)) {
             spreadAir(level, pos)
-            level.scheduleTick(pos, this, 15, TickPriority.NORMAL)
+            level.scheduleTick(pos, this, 20, TickPriority.NORMAL)
         }
         super.tick(state, level, pos, random)
     }

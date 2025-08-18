@@ -204,13 +204,17 @@ object Functions {
         val blockId = BuiltInRegistries.BLOCK.getKey(targetState.block).toString()
 
         if (blockId.contains("glitch") && !blockId.contains("decor")) {
-            level.setBlock(targetPos, Blocks.AIR.defaultBlockState(), 2)
+            if (!targetState.isAir)
+                level.destroyBlock(targetPos,false)
+            else
+                level.setBlock(targetPos, Blocks.AIR.defaultBlockState(), 2)
             level.setBlock(pos,Blocks.AIR.defaultBlockState(),2)
+            glitchRemoveFunction(level)
         }
         if (targetState.isAir) {
             if (97 >= random.nextIntBetweenInclusive(1,100)) {
                 level.setBlock(targetPos, ModBlocks.FIX_GAS.get().defaultBlockState(), 2)
-                if (97 >= random.nextIntBetweenInclusive(1,100)) {
+                if (98 >= random.nextIntBetweenInclusive(1,100)) {
                     level.setBlock(pos,Blocks.AIR.defaultBlockState(),2)
                 }
             } else {
@@ -243,7 +247,7 @@ object Functions {
         )
 
         return directions.all { offset ->
-            BuiltInRegistries.BLOCK.getKey(level.getBlockState(pos.offset(offset)).block).toString().contains("glitch")
+            BuiltInRegistries.BLOCK.getKey(level.getBlockState(pos.offset(offset)).block).toString().contains("glitch") || !hasAirNeighbor(level,pos.offset(offset))
         }
     }
     private fun hasNonAirNeighbor(level: Level, pos: BlockPos,rad: Int): Boolean {
