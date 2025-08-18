@@ -11,9 +11,9 @@ import ru.furpuro.known_legends.Known_legends.ID
 
 object ModMaterials {
      val PROTECTIVE_SUIT: ArmorMaterial = ArmorMaterial(
-        30,
-        makeDefense(4, 0, 0, 3, 0),
-        1,
+        31,
+        makeDefense(5, 0, 0, 4, 0),
+        9,
         SoundEvents.ARMOR_EQUIP_LEATHER,
         0.0f,
         0.0f,
