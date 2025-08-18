@@ -183,7 +183,6 @@ object ModItems {
         Item(
             properties
                 .fireResistant()
-                .stacksTo(48)
                 .rarity(Rarity.UNCOMMON)
         )
     }
