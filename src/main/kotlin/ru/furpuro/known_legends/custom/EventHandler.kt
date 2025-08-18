@@ -72,7 +72,7 @@ class EventHandler {
         val level = event.level
         //val defState = state.block.defaultBlockState()
         val blockId = BuiltInRegistries.BLOCK.getKey(state.block).toString()
-        if (level is Level) {
+        if (!level.isClientSide && level is Level) {
             if (blockId.contains("glitch") && !blockId.contains("decor")) {
                 glitchRemoveFunction(level)
             } /*else {
