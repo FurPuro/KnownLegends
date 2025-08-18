@@ -72,7 +72,10 @@ object Functions {
 
         return pos.offset(directions.random())
     }
-    fun spreadGlitch(pos: BlockPos,level: ServerLevel,random: RandomSource) {
+    fun spreadGlitch(pos: BlockPos,level: ServerLevel,random: RandomSource,spawnEntities: Boolean) {
+        if (isAllNeighborsGlitch(level,pos))
+            return
+
         val targetPos = getRandomNeighbor(pos)
 
         val targetState = level.getBlockState(targetPos)
@@ -82,9 +85,9 @@ object Functions {
         val data = level.getData(ModAttachments.POINTS_DATA)
         val phase = getPhase(data.points)
 
-        placeGlitch(blockId,phase, random, targetState, level, pos, targetPos)
+        placeGlitch(blockId,phase, random, targetState, level, pos, targetPos,spawnEntities)
     }
-    fun placeGlitch(blockId: String,phase: Int,random: RandomSource,targetState: BlockState,level: ServerLevel,pos: BlockPos,targetPos: BlockPos) {
+    fun placeGlitch(blockId: String,phase: Int,random: RandomSource,targetState: BlockState,level: ServerLevel,pos: BlockPos,targetPos: BlockPos,spawnEntities: Boolean) {
         if ( ( (blockId.contains("glitch") && blockId.contains("decor")) || !blockId.contains("glitch") ) && !blockId.contains("hermetic") && !blockId.contains("chest") && !blockId.contains("barrel")) {
             if (phase >= 3) {
                 if (1 >= random.nextIntBetweenInclusive(1,200)) {
@@ -99,7 +102,7 @@ object Functions {
                         level.setBlock(pos.above(),ModBlocks.GLITCH_GRASS.get().defaultBlockState(),2)
                     }
                 }
-                if (1 >= random.nextIntBetweenInclusive(1,1000)) {
+                if (1 >= random.nextIntBetweenInclusive(1,900) && spawnEntities) {
                     if (!level.getBlockState(pos).isAir && level.getBlockState(pos.above()).isAir && level.getBlockState(pos.above().above()).isAir) {
                         ModEntityTypes.GLITCH_ENTITY.get().spawn(level,pos.above(),EntitySpawnReason.EVENT)
                     }
@@ -164,7 +167,7 @@ object Functions {
                     level.destroyBlock(targetPos,false)
                     level.setBlock(targetPos, ModBlocks.GLITCH_AIR.get().defaultBlockState(), 2)
                 }
-                if (1 >= random.nextIntBetweenInclusive(1,800)) {
+                if (1 >= random.nextIntBetweenInclusive(1,750) && spawnEntities) {
                     if (!level.getBlockState(pos).isAir && level.getBlockState(pos.above()).isAir && level.getBlockState(pos.above()).isAir) {
                         ModEntityTypes.GLITCH_PARASITE.get().spawn(level,pos.above(),EntitySpawnReason.EVENT)
                     }
@@ -205,9 +208,9 @@ object Functions {
             level.setBlock(pos,Blocks.AIR.defaultBlockState(),2)
         }
         if (targetState.isAir) {
-            if (95 >= random.nextIntBetweenInclusive(1,100)) {
+            if (97 >= random.nextIntBetweenInclusive(1,100)) {
                 level.setBlock(targetPos, ModBlocks.FIX_GAS.get().defaultBlockState(), 2)
-                if (99 >= random.nextIntBetweenInclusive(1,100)) {
+                if (97 >= random.nextIntBetweenInclusive(1,100)) {
                     level.setBlock(pos,Blocks.AIR.defaultBlockState(),2)
                 }
             } else {
@@ -227,6 +230,20 @@ object Functions {
 
         return directions.any { offset ->
             level.getBlockState(pos.offset(offset)).isAir
+        }
+    }
+    private fun isAllNeighborsGlitch(level: Level, pos: BlockPos): Boolean {
+        val directions = listOf(
+            BlockPos(1, 0, 0),
+            BlockPos(-1, 0, 0),
+            BlockPos(0, 1, 0),
+            BlockPos(0, -1, 0),
+            BlockPos(0, 0, 1),
+            BlockPos(0, 0, -1)
+        )
+
+        return directions.all { offset ->
+            BuiltInRegistries.BLOCK.getKey(level.getBlockState(pos.offset(offset)).block).toString().contains("glitch")
         }
     }
     private fun hasNonAirNeighbor(level: Level, pos: BlockPos,rad: Int): Boolean {

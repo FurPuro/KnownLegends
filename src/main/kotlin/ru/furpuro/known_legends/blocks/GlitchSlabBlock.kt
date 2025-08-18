@@ -49,7 +49,7 @@ open class GlitchSlabBlock(props: Properties) : SlabBlock(props.randomTicks()) {
 
     public override fun randomTick(state: BlockState, level: ServerLevel, pos: BlockPos, random: RandomSource) {
         if (!level.isClientSide()) {
-            spreadGlitch(pos,level,random)
+            spreadGlitch(pos,level,random,true)
         }
 
         super.randomTick(state, level, pos, random)

@@ -39,8 +39,8 @@ class GlitchMobEffect : MobEffect(
                 }
             }
 
-            if (!targetState.isAir && 25 >= level.random.nextIntBetweenInclusive(1,100)) { // 25%
-                placeGlitch(blockId,phase,level.random,targetState,level,pos,pos)
+            if (!targetState.isAir && 10+5*amplifier >= level.random.nextIntBetweenInclusive(1,100)) { // 25%
+                placeGlitch(blockId,phase,level.random,targetState,level,pos,pos,false)
             }
 
         }
@@ -60,6 +60,6 @@ class GlitchMobEffect : MobEffect(
     }
 
     override fun shouldApplyEffectTickThisTick(duration: Int, amplifier: Int): Boolean {
-        return (duration%round((15/(amplifier+1)).toDouble())).toInt()==0
+        return (duration%round((20/(amplifier+1)).toDouble())).toInt()==0
     }
 }
