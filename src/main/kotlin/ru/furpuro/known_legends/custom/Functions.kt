@@ -88,7 +88,7 @@ object Functions {
         placeGlitch(blockId,phase, random, targetState, level, pos, targetPos,spawnEntities)
     }
     fun placeGlitch(blockId: String,phase: Int,random: RandomSource,targetState: BlockState,level: ServerLevel,pos: BlockPos,targetPos: BlockPos,spawnEntities: Boolean) {
-        if ( ( (blockId.contains("glitch") && blockId.contains("decor")) || !blockId.contains("glitch") ) && !blockId.contains("hermetic") && !blockId.contains("chest") && !blockId.contains("barrel")) {
+        if ( ( (blockId.contains("glitch") && blockId.contains("decor")) || !blockId.contains("glitch") ) && !blockId.contains("hermetic") && level.getBlockEntity(targetPos) == null) {
             if (phase >= 3) {
                 if (1 >= random.nextIntBetweenInclusive(1,200)) {
                     if (level.getBlockState(pos.above()).isAir && level.getBlockState(pos).isSolidRender) {
@@ -182,7 +182,7 @@ object Functions {
             }
 
         } else if (blockId.contains("hermetic")) {
-            if (1 >= random.nextInt(1,375)) { // ~ 0.27%
+            if (1 >= random.nextIntBetweenInclusive(1,375)) { // ~ 0.27%
                 if (blockId.contains("glass") && !blockId.contains("cracked")) {
                     level.destroyBlock(targetPos,false)
                     level.setBlock(targetPos, ModBlocks.CRACKED_HERMETIC_GLASS.get().defaultBlockState(), 2)
@@ -193,6 +193,10 @@ object Functions {
                     level.destroyBlock(targetPos,false)
                     level.setBlock(targetPos, ModBlocks.GLITCH_AIR.get().defaultBlockState(), 2)
                 }
+            }
+        } else if (level.getBlockEntity(targetPos) != null) {
+            if (30 >= random.nextIntBetweenInclusive(1,100)) {
+                level.destroyBlock(targetPos,true)
             }
         }
     }
