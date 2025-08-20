@@ -194,7 +194,7 @@ object Functions {
                     level.setBlock(targetPos, ModBlocks.GLITCH_AIR.get().defaultBlockState(), 2)
                 }
             }
-        } else if (level.getBlockEntity(targetPos) != null) {
+        } else if (level.getBlockEntity(targetPos) != null && !blockId.contains("grave") && !blockId.contains("tomb")) {
             if (30 >= random.nextIntBetweenInclusive(1,100)) {
                 level.destroyBlock(targetPos,true)
             }
