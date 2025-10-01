@@ -13,7 +13,7 @@ object ModCreativeModeTabs {
     val CREATIVE_MODE_TAB: DeferredRegister<CreativeModeTab> = DeferredRegister.create(Registries.CREATIVE_MODE_TAB,Known_legends.ID)
 
     val GLITCH_MODE_TAB: DeferredHolder<CreativeModeTab, CreativeModeTab> = CREATIVE_MODE_TAB.register("glitch_tab") { ->
-        CreativeModeTab.builder().icon { ItemStack(ModItems.GLITCH_BLOCK.get()) }
+        CreativeModeTab.builder().icon { ItemStack(ModItems.GLITCH_SHARD.get()) }
             .title(Component.translatable("creativetab.known_legends.glitch"))
             .displayItems {itemDisplayParameters,output ->
                 output.accept(ModItems.GLITCH_BLOCK)
@@ -35,12 +35,16 @@ object ModCreativeModeTabs {
                 output.accept(ModItems.GLITCH_GLASS)
                 output.accept(ModItems.GLITCH_GLASS_PANE)
                 output.accept(ModItems.GLITCH_LASER)
+                output.accept(ModItems.GLITCH_SWORD)
+                output.accept(ModItems.GLITCH_PARASITE_SPAWN_EGG)
+                output.accept(ModItems.GLITCH_ENTITY_SPAWN_EGG)
+                output.accept(ModItems.GLITCH_CRAWLER_SPAWN_EGG)
             }
             .build()
     }
 
     val DEFENSE_MODE_TAB: DeferredHolder<CreativeModeTab, CreativeModeTab> = CREATIVE_MODE_TAB.register("defense_tab") { ->
-        CreativeModeTab.builder().icon { ItemStack(ModItems.HERMETIC_WALL.get()) }
+        CreativeModeTab.builder().icon { ItemStack(ModItems.FIX_POWDER.get()) }
             .withTabsBefore(ResourceLocation.fromNamespaceAndPath(Known_legends.ID,"glitch_tab"))
             .title(Component.translatable("creativetab.known_legends.defense"))
             .displayItems {itemDisplayParameters,output ->
