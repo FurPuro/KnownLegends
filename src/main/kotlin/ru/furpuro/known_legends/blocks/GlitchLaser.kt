@@ -36,9 +36,8 @@ class GlitchLaser(props:Properties): GlitchBlock(props) {
     override fun tick(state: BlockState, level: ServerLevel, pos: BlockPos, random: RandomSource) {
         if (!level.isClientSide) {
             var offsetPos:BlockPos = pos
-            val effect:MobEffectInstance = MobEffectInstance(ModMobEffects.GLITCH,60,1,false,false,true)
+            val effect = MobEffectInstance(ModMobEffects.GLITCH,60,1,false,false,true)
             for (i in 1..10) {
-                offsetPos = offsetPos.above()
                 level.sendParticles(
                     ParticleTypes.ASH,
                     offsetPos.center.x,
@@ -62,6 +61,7 @@ class GlitchLaser(props:Properties): GlitchBlock(props) {
                 } else {
                     break
                 }
+                offsetPos = offsetPos.above()
             }
 
             level.scheduleTick(pos,this,1)
