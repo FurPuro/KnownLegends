@@ -54,6 +54,7 @@ class GlitchAir(props: Properties) : Block(props.randomTicks().air().noOcclusion
         if (!level.isClientSide()) {
             spreadGlitch(pos,level,random,true)
         }
+
         super.randomTick(state, level, pos, random)
     }
 

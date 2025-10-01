@@ -207,22 +207,25 @@ object Functions {
 
         val blockId = BuiltInRegistries.BLOCK.getKey(targetState.block).toString()
 
-        if (blockId.contains("glitch") && !blockId.contains("decor")) {
-            if (!targetState.isAir)
-                level.destroyBlock(targetPos,false)
-            else
-                level.setBlock(targetPos, Blocks.AIR.defaultBlockState(), 2)
-            level.setBlock(pos,Blocks.AIR.defaultBlockState(),2)
-            glitchRemoveFunction(level)
-        }
-        if (targetState.isAir) {
-            if (97 >= random.nextIntBetweenInclusive(1,100)) {
-                level.setBlock(targetPos, ModBlocks.FIX_GAS.get().defaultBlockState(), 2)
-                if (98 >= random.nextIntBetweenInclusive(1,100)) {
+        if (hasNonAirNeighbor(level,targetPos,5)) {
+            if (blockId.contains("glitch") && !blockId.contains("decor")) {
+                if (!targetState.isAir)
+                    level.destroyBlock(targetPos,false)
+                else
+                    level.setBlock(targetPos, Blocks.AIR.defaultBlockState(), 2)
+                if (98 >= random.nextIntBetweenInclusive(1,100))
+                    level.setBlock(pos,Blocks.AIR.defaultBlockState(),2)
+                glitchRemoveFunction(level)
+            }
+            if (targetState.isAir) {
+                if (97 >= random.nextIntBetweenInclusive(1,100)) {
+                    level.setBlock(targetPos, ModBlocks.FIX_GAS.get().defaultBlockState(), 2)
+                    if (98 >= random.nextIntBetweenInclusive(1,100)) {
+                        level.setBlock(pos,Blocks.AIR.defaultBlockState(),2)
+                    }
+                } else {
                     level.setBlock(pos,Blocks.AIR.defaultBlockState(),2)
                 }
-            } else {
-                level.setBlock(pos,Blocks.AIR.defaultBlockState(),2)
             }
         }
     }
