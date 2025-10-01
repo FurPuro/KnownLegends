@@ -1,0 +1,7 @@
+{
+  "model": {
+    "type": "minecraft:model",
+
+    "model": "known_legends:item/glitch_entity_spawn_egg"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "model": {
+    "type": "minecraft:model",
+
+    "model": "known_legends:item/glitch_crawler_spawn_egg"
+  }
+}

@@ -52,6 +52,10 @@
   "entity.known_legends.glitch_parasite": "Паразит Глюка",
   "entity.known_legends.glitch_crawler": "Ползун Глюка",
 
+  "item.known_legends.glitch_entity_spawn_egg": "Яйцо Призыва Сущности Глюка",
+  "item.known_legends.glitch_parasite_spawn_egg": "Яйцо Призыва Паразита Глюка",
+  "item.known_legends.glitch_crawler_spawn_egg": "Яйцо Призыва Ползуна Глюка",
+
   "effect.known_legends.glitch": "Глюк",
   "effect.known_legends.glitch.description": "Медленно превращает тебя в сущность глюка",
 
@@ -60,6 +64,8 @@
   "item.known_legends.fix_powder": "Ремонтирующая Пыль",
 
   "item.known_legends.glitch_shard": "Осколок Глюка",
+
+  "item.known_legends.glitch_sword": "Меч Глюка",
 
   "creativetab.known_legends.glitch": "Глюки",
   "creativetab.known_legends.defense": "Защита",

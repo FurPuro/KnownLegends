@@ -7,6 +7,7 @@ import net.neoforged.neoforge.registries.DeferredRegister
 import ru.furpuro.known_legends.Known_legends
 import ru.furpuro.known_legends.blocks.ModBlocks
 import ru.furpuro.known_legends.custom.ModMaterials
+import ru.furpuro.known_legends.entities.ModEntityTypes
 import ru.furpuro.known_legends.fuids.ModFluids
 
 object ModItems {
@@ -124,6 +125,37 @@ object ModItems {
         Item(
             properties
                 .rarity(Rarity.UNCOMMON)
+                .fireResistant()
+        )
+    }
+
+    val GLITCH_SWORD: DeferredItem<Item> = REGISTRY.registerItem("glitch_sword") { properties ->
+        Item(
+            properties
+                .rarity(Rarity.UNCOMMON)
+                .sword(ModToolMaterials.GLITCH,4.2f,-2.2f)
+                .fireResistant()
+        )
+    }
+
+    val GLITCH_PARASITE_SPAWN_EGG: DeferredItem<Item> = REGISTRY.registerItem("glitch_parasite_spawn_egg") { properties ->
+        SpawnEggItem(
+            ModEntityTypes.GLITCH_PARASITE.get(),
+            properties
+        )
+    }
+
+    val GLITCH_ENTITY_SPAWN_EGG: DeferredItem<Item> = REGISTRY.registerItem("glitch_entity_spawn_egg") { properties ->
+        SpawnEggItem(
+            ModEntityTypes.GLITCH_ENTITY.get(),
+            properties
+        )
+    }
+
+    val GLITCH_CRAWLER_SPAWN_EGG: DeferredItem<Item> = REGISTRY.registerItem("glitch_crawler_spawn_egg") { properties ->
+        SpawnEggItem(
+            ModEntityTypes.GLITCH_CRAWLER.get(),
+            properties
         )
     }
 

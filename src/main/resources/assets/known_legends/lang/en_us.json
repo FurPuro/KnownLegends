@@ -52,6 +52,10 @@
   "entity.known_legends.glitch_parasite": "Glitch Parasite",
   "entity.known_legends.glitch_crawler": "Glitch Crawler",
 
+  "item.known_legends.glitch_entity_spawn_egg": "Glitch Entity Spawn Egg",
+  "item.known_legends.glitch_parasite_spawn_egg": "Glitch Parasite Spawn Egg",
+  "item.known_legends.glitch_crawler_spawn_egg": "Glitch Crawler Spawn Egg",
+
   "effect.known_legends.glitch": "Glitch",
   "effect.known_legends.glitch.description": "Slowly transforms you into glitch entity",
 
@@ -60,6 +64,8 @@
   "item.known_legends.fix_powder": "Fix Powder",
 
   "item.known_legends.glitch_shard": "Glitch Shard",
+
+  "item.known_legends.glitch_sword": "Glitch Sword",
 
   "creativetab.known_legends.glitch": "Glitches",
   "creativetab.known_legends.defense": "Defense",

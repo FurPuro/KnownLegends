@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "known_legends:item/glitch_parasite_spawn_egg"
+  }
+}
