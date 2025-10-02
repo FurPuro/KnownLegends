@@ -95,7 +95,7 @@ object Functions {
                         level.setBlock(pos.above(),ModBlocks.GLITCH_LASER.get().defaultBlockState(),2)
                     }
                 }
-                if (1 >= random.nextIntBetweenInclusive(1,300)) {
+                if (1 >= random.nextIntBetweenInclusive(1,400)) {
                     if (level.getBlockState(pos.above()).isAir && level.getBlockState(pos).isSolidRender) {
                         level.setBlock(pos.above(),ModBlocks.GLITCH_ALTAR.get().defaultBlockState(),2)
                     }
