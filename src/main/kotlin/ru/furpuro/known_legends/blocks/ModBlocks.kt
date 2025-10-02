@@ -48,6 +48,14 @@ object ModBlocks {
         )
     }
 
+    val GLITCH_ALTAR: DeferredBlock<Block> = REGISTRY.registerBlock("glitch_altar") { properties ->
+        GlitchAltar(properties
+            .strength(-1f,0f)
+            .sound(SoundType.MUD_BRICKS)
+            .noOcclusion()
+        )
+    }
+
     val GLITCH_DIRT: DeferredBlock<GlitchBlock> = REGISTRY.registerBlock("glitch_dirt") { properties ->
         GlitchBlock(properties
             .strength(1.6f,1000f)

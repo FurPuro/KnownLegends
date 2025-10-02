@@ -9,6 +9,7 @@ import ru.furpuro.known_legends.blocks.ModBlocks
 import ru.furpuro.known_legends.custom.ModMaterials
 import ru.furpuro.known_legends.entities.ModEntityTypes
 import ru.furpuro.known_legends.fuids.ModFluids
+import ru.furpuro.known_legends.items.custom.GlitchSword
 
 object ModItems {
     val REGISTRY: DeferredRegister.Items = DeferredRegister.createItems(Known_legends.ID)
@@ -130,10 +131,10 @@ object ModItems {
     }
 
     val GLITCH_SWORD: DeferredItem<Item> = REGISTRY.registerItem("glitch_sword") { properties ->
-        Item(
+        GlitchSword(
+            ModToolMaterials.GLITCH,4.2f,-2.2f,
             properties
                 .rarity(Rarity.UNCOMMON)
-                .sword(ModToolMaterials.GLITCH,4.2f,-2.2f)
                 .fireResistant()
         )
     }

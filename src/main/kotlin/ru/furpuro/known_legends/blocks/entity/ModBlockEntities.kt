@@ -10,10 +10,17 @@ import ru.furpuro.known_legends.blocks.ModBlocks
 object ModBlockEntities {
     val BLOCK_ENTITIES: DeferredRegister<BlockEntityType<*>> = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE,Known_legends.ID)
 
-    val FIX_GAS_SPRAYER_BE: DeferredHolder<BlockEntityType<*>, BlockEntityType<FixGasSprayerEntity>> = BLOCK_ENTITIES.register("fix_gas_sprayer_be") {->
+    val FIX_GAS_SPRAYER: DeferredHolder<BlockEntityType<*>, BlockEntityType<FixGasSprayerEntity>> = BLOCK_ENTITIES.register("fix_gas_sprayer") {->
         BlockEntityType(
             ::FixGasSprayerEntity,
             ModBlocks.FIX_GAS_SPRAYER.get()
+        )
+    }
+
+    val GLITCH_ALTAR: DeferredHolder<BlockEntityType<*>, BlockEntityType<GlitchAltarEntity>> = BLOCK_ENTITIES.register("glitch_altar") {->
+        BlockEntityType(
+            ::GlitchAltarEntity,
+            ModBlocks.GLITCH_ALTAR.get()
         )
     }
 }

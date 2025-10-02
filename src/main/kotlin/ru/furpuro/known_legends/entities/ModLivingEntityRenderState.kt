@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.entity.state.LivingEntityRenderState
 import software.bernie.geckolib.constant.dataticket.DataTicket
 import software.bernie.geckolib.renderer.base.GeoRenderState
 
-class ModRenderState : LivingEntityRenderState(), GeoRenderState {
+class ModLivingEntityRenderState : LivingEntityRenderState(), GeoRenderState {
     override fun <D : Any?> addGeckolibData(dataTicket: DataTicket<D>?, data: D?) {
         TODO("Not yet implemented")
     }
