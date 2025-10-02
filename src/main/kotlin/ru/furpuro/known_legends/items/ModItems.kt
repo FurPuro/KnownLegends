@@ -132,7 +132,7 @@ object ModItems {
 
     val GLITCH_SWORD: DeferredItem<Item> = REGISTRY.registerItem("glitch_sword") { properties ->
         GlitchSword(
-            ModToolMaterials.GLITCH,4.2f,-2.2f,
+            ModToolMaterials.GLITCH,4f,-2.7f,
             properties
                 .rarity(Rarity.UNCOMMON)
                 .fireResistant()

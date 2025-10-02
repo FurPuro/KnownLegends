@@ -58,6 +58,8 @@ class GlitchAltarEntity(pos: BlockPos,state: BlockState) : BlockEntity(ModBlockE
     var defaultRotationSpeed  = 1.5f
     var rotationSpeed = 1.5f
     var progress = 0f
+    var needShards = 3
+    var shardsInserted = 0
 
     fun getRenderingRotation(): Float {
         rotation += rotationSpeed

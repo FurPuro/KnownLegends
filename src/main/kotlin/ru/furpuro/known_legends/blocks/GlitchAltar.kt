@@ -73,6 +73,12 @@ class GlitchAltar(props:Properties): BaseEntityBlock(props),EntityBlock {
                 be.inventory.insertItem(0, stack.copy(), false)
                 stack.shrink(1)
                 level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 2f)
+            } else if (!stack.isEmpty && !be.inventory.getStackInSlot(0).isEmpty) {
+                if (be.inventory.getStackInSlot(0).`is`(Items.DIAMOND_SWORD) && stack.`is`(ModItems.GLITCH_SHARD) && be.shardsInserted < be.needShards) {
+                    be.shardsInserted += 1
+                    stack.shrink(1)
+                    level.playSound(player, pos, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.BLOCKS, 1f, 3f)
+                }
             } else if (stack.isEmpty) {
                 val stackOnPedestal: ItemStack = be.inventory.extractItem(0, 1, false)
                 player.setItemInHand(InteractionHand.MAIN_HAND, stackOnPedestal)
@@ -94,27 +100,31 @@ class GlitchAltar(props:Properties): BaseEntityBlock(props),EntityBlock {
         if (level.getBlockEntity(pos) is GlitchAltarEntity) {
             val be = level.getBlockEntity(pos) as GlitchAltarEntity
 
-            if (be.inventory.getStackInSlot(0).`is`(Items.DIAMOND_SWORD) && be.progress < 1.00f) {
-                be.progress += 0.01f
-                be.rotationSpeed += be.progress*10f
-                level.sendParticles(
-                    ParticleTypes.GLOW,
-                    pos.x+0.5,
-                    pos.y+0.7,
-                    pos.z+0.5,
-                    1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    be.progress.toDouble()
-                )
+            if (be.inventory.getStackInSlot(0).`is`(Items.DIAMOND_SWORD)) {
+                if (be.progress < 1.00f && be.shardsInserted == be.needShards) {
+                    be.progress += 0.01f
+                    be.rotationSpeed += be.progress * 10f
+                    level.sendParticles(
+                        ParticleTypes.GLOW,
+                        pos.x + 0.5,
+                        pos.y + 0.7,
+                        pos.z + 0.5,
+                        1,
+                        0.1,
+                        0.1,
+                        0.1,
+                        be.progress.toDouble()
+                    )
+                }
             } else if (be.progress > 0.01f) {
                 be.progress = 0f
                 be.rotationSpeed = be.defaultRotationSpeed
+                be.shardsInserted = 0
             }
 
             if (be.progress >= 1.00f) {
                 be.rotationSpeed = be.defaultRotationSpeed
+                be.shardsInserted = 0
                 be.progress = 0f
                 be.inventory.extractItem(0,1,false)
                 be.inventory.insertItem(0,ModItems.GLITCH_SWORD.toStack(1),false)
