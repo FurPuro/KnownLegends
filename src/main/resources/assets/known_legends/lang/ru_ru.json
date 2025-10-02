@@ -47,6 +47,8 @@
   "block.known_legends.cracked_hermetic_wall": "Потрескавшиеся Герметичная Стена",
   "item.known_legends.cracked_hermetic_glass": "Потрескавшиеся Герметичное Стекло",
   "block.known_legends.cracked_hermetic_glass": "Потрескавшиеся Герметичное Стекло",
+  "item.known_legends.glitch_altar": "Глюк-Алтарь",
+  "block.known_legends.glitch_altar": "Глюк-Алтарь",
 
   "entity.known_legends.glitch_entity": "Сущность Глюка",
   "entity.known_legends.glitch_parasite": "Паразит Глюка",
