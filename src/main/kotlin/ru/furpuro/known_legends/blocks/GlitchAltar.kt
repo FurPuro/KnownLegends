@@ -143,11 +143,11 @@ class GlitchAltar(props:Properties): BaseEntityBlock(props),EntityBlock {
                     level.sendParticles(
                         ParticleTypes.GLOW,
                         pos.x + 0.5,
-                        pos.y + 0.7,
+                        pos.y + 0.85,
                         pos.z + 0.5,
                         1,
                         0.1,
-                        0.1,
+                        0.2,
                         0.1,
                         be.progress.toDouble()
                     )
