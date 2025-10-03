@@ -27,20 +27,39 @@ class GlitchAltarRenderer :
         cameraPosition: Vec3
     ) {
         val itemRenderer = Minecraft.getInstance().itemRenderer
-        val stack: ItemStack = animatable!!.inventory.getStackInSlot(0)
 
         poseStack.pushPose()
-        poseStack.translate(0.5f, 1f-animatable.progress, 0.5f)
-        poseStack.scale(0.55f, 0.55f, 0.55f)
-        poseStack.mulPose(Axis.YP.rotationDegrees(animatable.getRenderingRotation()))
+        poseStack.translate(0.5,0.8,0.5)
+        var scale = 0.2f
+        poseStack.scale(scale,scale,scale)
+        poseStack.mulPose(Axis.YP.rotationDegrees(animatable!!.getRenderingRotation()))
+        for (i in 0..<animatable.inventory.slots) {
 
-        itemRenderer.renderStatic(
-            stack, ItemDisplayContext.FIXED, getLightLevel(
-                animatable.level!!,
-                animatable.blockPos
-            ), OverlayTexture.NO_OVERLAY, poseStack, bufferSource, animatable.level, 1
-        )
+            val stack: ItemStack = animatable.inventory.getStackInSlot(i)
+
+            if (stack.isEmpty)
+                continue
+
+            if (i == 0 && animatable.inventory.getStackInSlot(1).isEmpty) {
+                poseStack.scale(2.75f,2.75f,2.75f)
+                poseStack.translate(0.0,0.6,0.0)
+            }
+
+            itemRenderer.renderStatic(
+                stack, ItemDisplayContext.FIXED, getLightLevel(
+                    animatable.level!!,
+                    animatable.blockPos
+                ), OverlayTexture.NO_OVERLAY, poseStack, bufferSource, animatable.level, 1
+            )
+
+            if (i == 0 && animatable.inventory.getStackInSlot(1).isEmpty) {
+                break
+            }
+
+            poseStack.translate(0.0,1.0,0.0)
+        }
         poseStack.popPose()
+
 
         super.render(animatable, partialTick, poseStack, bufferSource, packedLight, packedOverlay, cameraPosition)
     }
@@ -49,4 +68,4 @@ class GlitchAltarRenderer :
         val sLight: Int = level.getBrightness(LightLayer.SKY, pos)
         return LightTexture.pack(bLight, sLight)
     }
-    }
+}

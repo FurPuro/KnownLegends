@@ -12,9 +12,11 @@ import net.minecraft.util.RandomSource
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.player.Player
+import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Items
 import net.minecraft.world.level.BlockGetter
+import net.minecraft.world.level.ItemLike
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.LevelReader
 import net.minecraft.world.level.block.BaseEntityBlock
@@ -25,7 +27,10 @@ import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.phys.BlockHitResult
 import net.minecraft.world.phys.shapes.CollisionContext
 import net.minecraft.world.phys.shapes.VoxelShape
+import ru.furpuro.known_legends.Known_legends
 import ru.furpuro.known_legends.blocks.entity.GlitchAltarEntity
+import ru.furpuro.known_legends.blocks.entity.GlitchAltarRecipes
+import ru.furpuro.known_legends.blocks.entity.GlitchAltarRenderer
 import ru.furpuro.known_legends.blocks.entity.ModBlockEntities
 import ru.furpuro.known_legends.items.ModItems
 
@@ -73,15 +78,27 @@ class GlitchAltar(props:Properties): BaseEntityBlock(props),EntityBlock {
                 be.inventory.insertItem(0, stack.copy(), false)
                 stack.shrink(1)
                 level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 2f)
-            } else if (!stack.isEmpty && !be.inventory.getStackInSlot(0).isEmpty) {
-                if (be.inventory.getStackInSlot(0).`is`(Items.DIAMOND_SWORD) && stack.`is`(ModItems.GLITCH_SHARD) && be.shardsInserted < be.needShards) {
-                    be.shardsInserted += 1
-                    stack.shrink(1)
-                    level.playSound(player, pos, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.BLOCKS, 1f, 3f)
-                }
+            } else if (be.inventory.getStackInSlot(1).isEmpty && !stack.isEmpty) {
+                be.inventory.insertItem(1, stack.copy(), false)
+                stack.shrink(1)
+                level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 2f)
+            } else if (be.inventory.getStackInSlot(2).isEmpty && !stack.isEmpty) {
+                be.inventory.insertItem(2, stack.copy(), false)
+                stack.shrink(1)
+                level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 2f)
+            } else if (be.inventory.getStackInSlot(3).isEmpty && !stack.isEmpty) {
+                be.inventory.insertItem(3, stack.copy(), false)
+                stack.shrink(1)
+                level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 2f)
             } else if (stack.isEmpty) {
-                val stackOnPedestal: ItemStack = be.inventory.extractItem(0, 1, false)
-                player.setItemInHand(InteractionHand.MAIN_HAND, stackOnPedestal)
+                val stackOnPedestal: ItemStack = be.inventory.extractItem(3, 1, false)
+                val stackOnPedestal1: ItemStack = be.inventory.extractItem(2, 1, false)
+                val stackOnPedestal2: ItemStack = be.inventory.extractItem(1, 1, false)
+                val stackOnPedestal3: ItemStack = be.inventory.extractItem(0, 1, false)
+                player.addItem(stackOnPedestal)
+                player.addItem(stackOnPedestal1)
+                player.addItem(stackOnPedestal2)
+                player.addItem(stackOnPedestal3)
                 be.clearContents()
                 level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 1f)
             }
@@ -96,12 +113,31 @@ class GlitchAltar(props:Properties): BaseEntityBlock(props),EntityBlock {
         super.onPlace(state, level, pos, oldState, movedByPiston)
     }
 
+    private fun getCraftedItem(be:GlitchAltarEntity): ItemStack? {
+        val invItems: MutableList<Item> = MutableList(4) { Items.AIR }
+
+        for (i in 0..<be.inventory.slots) {
+            invItems[i] = be.inventory.getStackInSlot(i).item
+            println(invItems[i])
+            println(GlitchAltarRecipes.GLITCH_SWORD_RECIPE[i])
+        }
+
+        if (GlitchAltarRecipes.GLITCH_SWORD_RECIPE.containsAll(invItems)) {
+            println("yes")
+            return ModItems.GLITCH_SWORD.toStack()
+        }
+        println("no")
+        return null
+    }
+
     override fun tick(state: BlockState, level: ServerLevel, pos: BlockPos, random: RandomSource) {
         if (level.getBlockEntity(pos) is GlitchAltarEntity) {
             val be = level.getBlockEntity(pos) as GlitchAltarEntity
 
-            if (be.inventory.getStackInSlot(0).`is`(Items.DIAMOND_SWORD)) {
-                if (be.progress < 1.00f && be.shardsInserted == be.needShards) {
+            val craftedItem = getCraftedItem(be)
+
+            if (craftedItem != null) {
+                if (be.progress < 1.00f) {
                     be.progress += 0.01f
                     be.rotationSpeed += be.progress * 10f
                     level.sendParticles(
@@ -116,18 +152,16 @@ class GlitchAltar(props:Properties): BaseEntityBlock(props),EntityBlock {
                         be.progress.toDouble()
                     )
                 }
-            } else if (be.progress > 0.01f) {
-                be.progress = 0f
-                be.rotationSpeed = be.defaultRotationSpeed
-                be.shardsInserted = 0
-            }
 
-            if (be.progress >= 1.00f) {
-                be.rotationSpeed = be.defaultRotationSpeed
-                be.shardsInserted = 0
+                if (be.progress >= 1.00f) {
+                    be.rotationSpeed = be.defaultRotationSpeed
+                    be.progress = 0f
+                    be.clearContents()
+                    be.inventory.insertItem(0,craftedItem,false)
+                }
+            } else {
                 be.progress = 0f
-                be.inventory.extractItem(0,1,false)
-                be.inventory.insertItem(0,ModItems.GLITCH_SWORD.toStack(1),false)
+                be.rotationSpeed = be.defaultRotationSpeed
             }
         }
 

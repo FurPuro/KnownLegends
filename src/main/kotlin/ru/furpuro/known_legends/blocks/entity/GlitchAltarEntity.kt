@@ -41,9 +41,9 @@ class GlitchAltarEntity(pos: BlockPos,state: BlockState) : BlockEntity(ModBlockE
         return animTest.setAndContinue(IDLE_ANIM)
     }
 
-    val inventory: ItemStackHandler = object : ItemStackHandler(1) {
+    val inventory: ItemStackHandler = object : ItemStackHandler(4) {
         override fun getStackLimit(slot: Int, stack: ItemStack): Int {
-            return 1
+            return 4
         }
 
         override fun onContentsChanged(slot: Int) {
@@ -55,11 +55,9 @@ class GlitchAltarEntity(pos: BlockPos,state: BlockState) : BlockEntity(ModBlockE
     }
 
     private var rotation = 0f
-    var defaultRotationSpeed  = 1.5f
-    var rotationSpeed = 1.5f
+    var defaultRotationSpeed  = 1f
+    var rotationSpeed = 1f
     var progress = 0f
-    var needShards = 3
-    var shardsInserted = 0
 
     fun getRenderingRotation(): Float {
         rotation += rotationSpeed
@@ -71,6 +69,9 @@ class GlitchAltarEntity(pos: BlockPos,state: BlockState) : BlockEntity(ModBlockE
 
     fun clearContents() {
         inventory.setStackInSlot(0, ItemStack.EMPTY)
+        inventory.setStackInSlot(1, ItemStack.EMPTY)
+        inventory.setStackInSlot(2, ItemStack.EMPTY)
+        inventory.setStackInSlot(3, ItemStack.EMPTY)
     }
 
 /*    fun drops() {
