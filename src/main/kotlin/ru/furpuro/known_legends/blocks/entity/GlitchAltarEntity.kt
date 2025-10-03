@@ -74,14 +74,14 @@ class GlitchAltarEntity(pos: BlockPos,state: BlockState) : BlockEntity(ModBlockE
         inventory.setStackInSlot(3, ItemStack.EMPTY)
     }
 
-/*    fun drops() {
+    fun drops() {
         val inv = SimpleContainer(inventory.slots)
-        for (i in 0 until inventory.slots) {
+        for (i in 0..<inventory.slots) {
             inv.setItem(i, inventory.getStackInSlot(i))
         }
 
         Containers.dropContents(level!!, worldPosition, inv)
-    }*/
+    }
 
     override fun saveAdditional(tag: CompoundTag, registries: HolderLookup.Provider) {
         super.saveAdditional(tag, registries)

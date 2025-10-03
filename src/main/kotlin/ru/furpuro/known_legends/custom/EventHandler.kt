@@ -13,6 +13,7 @@ import net.neoforged.neoforge.event.RegisterCommandsEvent
 import net.neoforged.neoforge.event.level.BlockEvent.BreakEvent
 import net.neoforged.neoforge.event.tick.LevelTickEvent
 import ru.furpuro.known_legends.blocks.ModBlocks
+import ru.furpuro.known_legends.blocks.entity.GlitchAltarEntity
 import ru.furpuro.known_legends.custom.Functions.glitchRemoveFunction
 import ru.furpuro.known_legends.custom.Functions.spawnGlitchAir
 
@@ -70,14 +71,14 @@ class EventHandler {
         val pos = event.pos
         val state = event.state
         val level = event.level
-        //val defState = state.block.defaultBlockState()
         val blockId = BuiltInRegistries.BLOCK.getKey(state.block).toString()
         if (!level.isClientSide && level is Level) {
             if (blockId.contains("glitch") && !blockId.contains("decor")) {
                 glitchRemoveFunction(level)
-            } /*else {
-                println(blockId)
-            }*/
+            } else if (level.getBlockEntity(pos) is GlitchAltarEntity) {
+                var be = level.getBlockEntity(pos) as GlitchAltarEntity
+                be.drops()
+            }
         }
     }
 }
